@@ -19,7 +19,7 @@ from email.header import decode_header
 from urllib import request as urlreq
 
 BOARD_PATH = os.path.join(os.path.dirname(__file__), "..", "data", "board.json")
-SUBJECT_MARKERS = ["Daily Manager Log", "Accounting status", "Where are we at"]
+SUBJECT_MARKERS = ["Restaurant Systems Pro-Daily Manager Log", "Accounting status", "Where are we at"]
 LOOKBACK_DAYS = 2
 
 def fetch_emails():
@@ -49,7 +49,7 @@ def fetch_emails():
                     if ct == "text/html":
                         chunk = re.sub(r"<[^>]+>", " ", chunk)
                     text += chunk + "\n"
-        bodies.append({"subject": subj, "date": msg.get("Date", ""), "text": text[:20000]})
+        bodies.append({"subject": subj, "date": msg.get("Date", ""), "text": text[:60000]})
     m.logout()
     return bodies
 
