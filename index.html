@@ -229,7 +229,7 @@ function scoreCell(entity, cell, ent){
   const answeredAge = ageDays(new Date(a.answeredAt));
   const staleTag = answeredAge > WEEKLY_STALE_DAYS;
 
-  if (cell.kind==='check'){
+  const isDateStr = v => typeof v === 'string' && /^\d{4}-\d{2}-\d{2}/.test(v); const prevMonthEnd = () => { const n = now(); return new Date(n.getFullYear(), n.getMonth(), 0); }; if (cell.kind==='check' && isDateStr(a.value)){ const d = new Date(a.value + 'T12:00:00'); const label = (d.getMonth()+1)+'/'+d.getDate(); if (cell.key === 'BAL'){ if (d < prevMonthEnd()) return {s:'red', v:label, tip:'balanced only through '+label}; return {s:'green', v:label, tip:a.q}; } const throughAge = ageDays(d); if (throughAge > WEEKLY_STALE_DAYS + 2) return {s:'red', v:label, tip:'through-date '+Math.floor(throughAge)+'d old'}; if (throughAge > WEEKLY_STALE_DAYS) return {s:'amber', v:label, tip:'through-date aging'}; return {s:'green', v:label, tip:a.q}; } if (cell.kind==='close' && isDateStr(a.value)){ const d = new Date(a.value + 'T12:00:00'); const label = 'thru '+(d.getMonth()+1)+'/'+d.getDate(); const n = now(); const priorEnd = new Date(n.getFullYear(), n.getMonth(), 0); const twoBackEnd = new Date(n.getFullYear(), n.getMonth()-1, 0); if (d >= priorEnd) return {s:'green', v:label, tip:a.q}; if (d >= twoBackEnd && n.getDate() <= 8) return {s:'amber', v:label, tip:'prior month close in window'}; return {s:'red', v:label, tip:'closed only '+label}; } if (cell.kind==='check'){
     const yes = a.value===true || String(a.value).toLowerCase()==='yes' || String(a.value).toLowerCase()==='true' || a.value===1;
     if (!yes) return {s:'red', v:'no', tip:a.q};
     if (staleTag) return {s:'red', v:Math.floor(answeredAge)+'d stale', tip:'last yes too old'};
