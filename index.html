@@ -244,7 +244,7 @@ function scoreCell(entity, cell, ent){
     return {s:'green', v:'$'+num, tip:a.q};
   }
   if (cell.kind==='date'){
-    const d = new Date(a.value);
+    const d = new Date(/^\d{4}-\d{2}-\d{2}$/.test(a.value) ? a.value + 'T12:00:00' : a.value);
     if (isNaN(d)) return {s:'amber', v:String(a.value).slice(0,8), tip:'unparseable date'};
     const throughAge = ageDays(d);
     const label = (d.getMonth()+1)+'/'+d.getDate();
