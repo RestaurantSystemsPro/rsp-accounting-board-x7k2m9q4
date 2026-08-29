@@ -40,7 +40,7 @@
    "Toledo's Clovis",
    "Toledo's Milburn",
    "Bleu Duck",
-   "SoNapa",
+   "SoNapa Management", "SoNapa Daytona Beach", "SoNapa Jacksonville", "SoNapa New Smyrna Beach", "SoNapa Ormond",
    "Wally's Pizza Pub",
    "Beast Craft BBQ",
    "Little Red Inn",
@@ -131,7 +131,7 @@
   "Toledo's Clovis",
   "Toledo's Milburn",
   "Bleu Duck",
-  "SoNapa",
+  "SoNapa Management", "SoNapa Daytona Beach", "SoNapa Jacksonville", "SoNapa New Smyrna Beach", "SoNapa Ormond",
   "Wally's Pizza Pub",
   "Beast Craft BBQ",
   "Little Red Inn",
@@ -178,7 +178,7 @@
   "Granville",
   "Maryland Fried Chicken"
  ],
- "answers": {
+ "answers": {"Karrington Rowe-All accounts reconciled through date": {"value": "2026-08-25", "answeredAt": "2026-08-26T17:00:00Z"}, "Germantown-All accounts reconciled through date": {"value": "2026-08-25", "answeredAt": "2026-08-26T17:00:00Z"}, "Park Cafe-All accounts reconciled through date": {"value": "2026-08-25", "answeredAt": "2026-08-26T17:00:00Z"},
   "Urban Hotdog-Cash deposits reconciled, after EOD review": {
    "value": true,
    "answeredAt": "2026-08-26T17:00:00Z"
