@@ -1,0 +1,47 @@
+name: Daily board update
+on:
+  schedule:
+    - cron: "0 13 * * 1-6"   # 6:00 AM Arizona, Monday through Saturday
+  workflow_dispatch: {}       # manual "Run workflow" button for testing
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Parse dispatch emails and update board
+        if: ${{ env.GMAIL_ADDRESS != '' }}
+        continue-on-error: true
+        env:
+          GMAIL_ADDRESS: ${{ secrets.GMAIL_ADDRESS }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python scripts/parse_dispatch.py
+      - name: Commit updated board
+        run: |
+          git config user.name "board-bot"
+          git config user.email "board-bot@users.noreply.github.com"
+          git add data/board.json
+          git diff --cached --quiet || git commit -m "Daily board update"
+          git push
+      - name: Upload site
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+  deploy:
+    needs: update
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
