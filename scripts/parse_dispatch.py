@@ -64,9 +64,9 @@ def extract_updates(bodies, known_entities):
         '{"updates": [{"entity": "<exact entity name>", "cell": "<one of: EOD, OS, DEP, RECON, BAL, PAY, CLOSE, NOTE>", '
         '"value": <true|false|number|"YYYY-MM-DD"|string>, "answeredAt": "<ISO datetime>"}]} '
         "Cell mapping: EOD reports reviewed -> EOD (true/false). Over/short dollar amounts -> OS (number). "
-        "Cash deposits reconciled -> DEP (true/false). Reconciled through a date -> RECON (date). "
-        "Balance sheet in balance -> BAL (true/false). Payroll entered through a date -> PAY (date). "
-        "Month or period close items -> CLOSE (true/false). Blockers or exceptions -> NOTE (string). "
+        "Cash deposits reconciled -> DEP (true/false, or the reconciled-through date YYYY-MM-DD if stated). Reconciled through a date -> RECON (date). "
+        "Balance sheet in balance -> BAL (true/false, or the LAST DATE it balanced as YYYY-MM-DD if stated). Payroll entered through a date -> PAY (date). "
+        "Month or period close items -> CLOSE (true/false, or the month-end date closed through as YYYY-MM-DD). Blockers or exceptions -> NOTE (string). "
         "Only include updates actually stated. Respond with ONLY the JSON, no markdown fences.\n\nEMAILS:\n"
         + "\n---\n".join(b["subject"] + "\n" + b["text"] for b in bodies)
     )
