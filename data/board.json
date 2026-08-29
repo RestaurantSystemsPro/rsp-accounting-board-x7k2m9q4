@@ -17,7 +17,7 @@
    "Karrington Rowe",
    "Library IV",
    "The Side Bar",
-   "Hops/Scotch",
+   "Hops/Scotch", "Folsom Lake Bowl",
    "River Valley Social",
    "Roberto's Mexican Food",
    "Tavern on Kruse",
@@ -110,7 +110,7 @@
   "Karrington Rowe",
   "Library IV",
   "The Side Bar",
-  "Hops/Scotch",
+  "Hops/Scotch", "Folsom Lake Bowl",
   "River Valley Social",
   "Roberto's Mexican Food",
   "Tavern on Kruse",
@@ -178,7 +178,7 @@
   "Granville",
   "Maryland Fried Chicken"
  ],
- "answers": {"Karrington Rowe-All accounts reconciled through date": {"value": "2026-08-25", "answeredAt": "2026-08-26T17:00:00Z"}, "Germantown-All accounts reconciled through date": {"value": "2026-08-25", "answeredAt": "2026-08-26T17:00:00Z"}, "Park Cafe-All accounts reconciled through date": {"value": "2026-08-25", "answeredAt": "2026-08-26T17:00:00Z"},
+ "answers": {"Folsom Lake Bowl-EOD reports reviewed for the full week": {"value": true, "answeredAt": "2026-08-26T17:00:00Z"}, "Folsom Lake Bowl-All accounts reconciled through date": {"value": "2026-07-31", "answeredAt": "2026-08-28T17:00:00Z"}, "Folsom Lake Bowl-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-08-28T17:00:00Z"}, "Folsom Lake Bowl-Exceptions or blockers": {"value": "July statements completed, August in review (Cy)", "answeredAt": "2026-08-28T17:00:00Z"},"Karrington Rowe-All accounts reconciled through date": {"value": "2026-08-25", "answeredAt": "2026-08-26T17:00:00Z"}, "Germantown-All accounts reconciled through date": {"value": "2026-08-25", "answeredAt": "2026-08-26T17:00:00Z"}, "Park Cafe-All accounts reconciled through date": {"value": "2026-08-25", "answeredAt": "2026-08-26T17:00:00Z"},
   "Urban Hotdog-Cash deposits reconciled, after EOD review": {
    "value": true,
    "answeredAt": "2026-08-26T17:00:00Z"
