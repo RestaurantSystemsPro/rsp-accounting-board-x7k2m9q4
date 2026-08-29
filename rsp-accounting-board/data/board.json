@@ -1,0 +1,651 @@
+{
+ "generatedAt": "2026-08-29T01:27:57.112576+00:00",
+ "teams": {
+  "Team Jia": [
+   "Beau Jo's - Idaho Springs",
+   "Beau Jo's - Arvada",
+   "Beau Jo's - Lone Tree",
+   "Beau Jo's - Evergreen",
+   "Beau Jo's - Denver",
+   "Beau Jo's - Fort Collins",
+   "Beau Jo's - Management",
+   "Beau Jo's - Period Close",
+   "Park Cafe",
+   "Maxwell's - McConnelsville",
+   "Maxwell's - Zanesville",
+   "Germantown",
+   "Karrington Rowe",
+   "Library IV",
+   "The Side Bar",
+   "Hops/Scotch",
+   "River Valley Social",
+   "Roberto's Mexican Food",
+   "Tavern on Kruse",
+   "Coati",
+   "Cochino",
+   "Ephemera",
+   "Clancy's",
+   "Cafe Verde"
+  ],
+  "Team Eli": [
+   "Owl Cafe",
+   "Urban Hotdog",
+   "Urban Hotdog Nob Hill",
+   "10 Sports",
+   "BackForty Smokehouse",
+   "Barndoor",
+   "Kippy's",
+   "Noodles Kitchen",
+   "Toledo's Cedar",
+   "Toledo's Clovis",
+   "Toledo's Milburn",
+   "Bleu Duck",
+   "SoNapa",
+   "Wally's Pizza Pub",
+   "Beast Craft BBQ",
+   "Little Red Inn",
+   "Modern Barn",
+   "The Greenwich",
+   "Savor",
+   "Schat's Bakery",
+   "42nd Street Cafe",
+   "Brew Bird",
+   "City Brew Hall",
+   "Retro Junkie",
+   "Firebrew"
+  ],
+  "Oversight (Melinda)": [
+   "Atlas Group",
+   "Brakeman's Burgers",
+   "Ola Juice Bar Garden of the Gods",
+   "Ola Juice Bar Kiowa",
+   "Piglatin Cochino"
+  ],
+  "Reg": [
+   "Gimani",
+   "Tulipani Pasta",
+   "Tulipani Park Square",
+   "Off the Rails BBQ",
+   "Gather",
+   "Sur Lie",
+   "Beadling Club",
+   "Frisch's",
+   "Nobby's Pizza",
+   "EPN 1",
+   "EPN 2",
+   "EPN 3",
+   "EPN 4",
+   "EPN 5",
+   "EPN 6",
+   "EPN 7",
+   "EPN 8"
+  ],
+  "Rey": [
+   "Grits Grill",
+   "The Dunes",
+   "Paulie's Pub",
+   "Paulie's Field Trip",
+   "Crave Protein",
+   "Domik's Pizza",
+   "The Search Bar",
+   "Wharf 850",
+   "Mom's Pizza and Pasta",
+   "Granville",
+   "Maryland Fried Chicken"
+  ]
+ },
+ "entities": [
+  "Beau Jo's - Idaho Springs",
+  "Beau Jo's - Arvada",
+  "Beau Jo's - Lone Tree",
+  "Beau Jo's - Evergreen",
+  "Beau Jo's - Denver",
+  "Beau Jo's - Fort Collins",
+  "Beau Jo's - Management",
+  "Beau Jo's - Period Close",
+  "Park Cafe",
+  "Maxwell's - McConnelsville",
+  "Maxwell's - Zanesville",
+  "Germantown",
+  "Karrington Rowe",
+  "Library IV",
+  "The Side Bar",
+  "Hops/Scotch",
+  "River Valley Social",
+  "Roberto's Mexican Food",
+  "Tavern on Kruse",
+  "Coati",
+  "Cochino",
+  "Ephemera",
+  "Clancy's",
+  "Cafe Verde",
+  "Owl Cafe",
+  "Urban Hotdog",
+  "Urban Hotdog Nob Hill",
+  "10 Sports",
+  "BackForty Smokehouse",
+  "Barndoor",
+  "Kippy's",
+  "Noodles Kitchen",
+  "Toledo's Cedar",
+  "Toledo's Clovis",
+  "Toledo's Milburn",
+  "Bleu Duck",
+  "SoNapa",
+  "Wally's Pizza Pub",
+  "Beast Craft BBQ",
+  "Little Red Inn",
+  "Modern Barn",
+  "The Greenwich",
+  "Savor",
+  "Schat's Bakery",
+  "42nd Street Cafe",
+  "Brew Bird",
+  "City Brew Hall",
+  "Retro Junkie",
+  "Firebrew",
+  "Atlas Group",
+  "Brakeman's Burgers",
+  "Ola Juice Bar Garden of the Gods",
+  "Ola Juice Bar Kiowa",
+  "Piglatin Cochino",
+  "Gimani",
+  "Tulipani Pasta",
+  "Tulipani Park Square",
+  "Off the Rails BBQ",
+  "Gather",
+  "Sur Lie",
+  "Beadling Club",
+  "Frisch's",
+  "Nobby's Pizza",
+  "EPN 1",
+  "EPN 2",
+  "EPN 3",
+  "EPN 4",
+  "EPN 5",
+  "EPN 6",
+  "EPN 7",
+  "EPN 8",
+  "Grits Grill",
+  "The Dunes",
+  "Paulie's Pub",
+  "Paulie's Field Trip",
+  "Crave Protein",
+  "Domik's Pizza",
+  "The Search Bar",
+  "Wharf 850",
+  "Mom's Pizza and Pasta",
+  "Granville",
+  "Maryland Fried Chicken"
+ ],
+ "answers": {
+  "Urban Hotdog-Cash deposits reconciled, after EOD review": {
+   "value": true,
+   "answeredAt": "2026-08-26T17:00:00Z"
+  },
+  "Urban Hotdog Nob Hill-Cash deposits reconciled, after EOD review": {
+   "value": true,
+   "answeredAt": "2026-08-26T17:00:00Z"
+  },
+  "42nd Street Cafe-Exceptions or blockers": {
+   "value": "2025 backlog work; invoice log categories corrected (Jan)",
+   "answeredAt": "2026-08-27T17:00:00Z"
+  },
+  "Beast Craft BBQ-Exceptions or blockers": {
+   "value": "4301 statement deposits completed (Adrianne)",
+   "answeredAt": "2026-08-27T17:00:00Z"
+  },
+  "The Search Bar-Exceptions or blockers": {
+   "value": "Concerns being followed up (Reynalyn)",
+   "answeredAt": "2026-08-26T17:00:00Z"
+  },
+  "Beau Jo's - Idaho Springs-Largest single-day over/short this week in dollars": {
+   "value": 0,
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "Beau Jo's - Arvada-Largest single-day over/short this week in dollars": {
+   "value": 0,
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "Beau Jo's - Lone Tree-Largest single-day over/short this week in dollars": {
+   "value": 0,
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "Beau Jo's - Evergreen-Largest single-day over/short this week in dollars": {
+   "value": 0,
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "Beau Jo's - Denver-Largest single-day over/short this week in dollars": {
+   "value": 0,
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "Beau Jo's - Fort Collins-Largest single-day over/short this week in dollars": {
+   "value": 0,
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "Beau Jo's - Management-Largest single-day over/short this week in dollars": {
+   "value": 0,
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "Beau Jo's - Period Close-Largest single-day over/short this week in dollars": {
+   "value": 0,
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "Park Cafe-Largest single-day over/short this week in dollars": {
+   "value": 0,
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "Maxwell's - McConnelsville-Largest single-day over/short this week in dollars": {
+   "value": 0,
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "Maxwell's - Zanesville-Largest single-day over/short this week in dollars": {
+   "value": 0,
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "Germantown-Largest single-day over/short this week in dollars": {
+   "value": 0,
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "Karrington Rowe-Largest single-day over/short this week in dollars": {
+   "value": 0,
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "Library IV-Largest single-day over/short this week in dollars": {
+   "value": 0,
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "The Side Bar-Largest single-day over/short this week in dollars": {
+   "value": 0,
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "Hops/Scotch-Largest single-day over/short this week in dollars": {
+   "value": 0,
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "River Valley Social-Largest single-day over/short this week in dollars": {
+   "value": 0,
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "Roberto's Mexican Food-Largest single-day over/short this week in dollars": {
+   "value": 0,
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "Tavern on Kruse-Largest single-day over/short this week in dollars": {
+   "value": 0,
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "Coati-Largest single-day over/short this week in dollars": {
+   "value": 0,
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "Cochino-Largest single-day over/short this week in dollars": {
+   "value": 0,
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "Ephemera-Largest single-day over/short this week in dollars": {
+   "value": 0,
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "Clancy's-Largest single-day over/short this week in dollars": {
+   "value": 0,
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "Cafe Verde-Largest single-day over/short this week in dollars": {
+   "value": 0,
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "Owl Cafe-Largest single-day over/short this week in dollars": {
+   "value": 0,
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "Urban Hotdog-Largest single-day over/short this week in dollars": {
+   "value": 0,
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "Urban Hotdog Nob Hill-Largest single-day over/short this week in dollars": {
+   "value": 0,
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "10 Sports-Largest single-day over/short this week in dollars": {
+   "value": 0,
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "BackForty Smokehouse-Largest single-day over/short this week in dollars": {
+   "value": 0,
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "Barndoor-Largest single-day over/short this week in dollars": {
+   "value": 0,
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "Kippy's-Largest single-day over/short this week in dollars": {
+   "value": 0,
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "Noodles Kitchen-Largest single-day over/short this week in dollars": {
+   "value": 0,
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "Toledo's Cedar-Largest single-day over/short this week in dollars": {
+   "value": 0,
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "Toledo's Clovis-Largest single-day over/short this week in dollars": {
+   "value": 0,
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "Toledo's Milburn-Largest single-day over/short this week in dollars": {
+   "value": 0,
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "Bleu Duck-Largest single-day over/short this week in dollars": {
+   "value": 0,
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "SoNapa-Largest single-day over/short this week in dollars": {
+   "value": 0,
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "Wally's Pizza Pub-Largest single-day over/short this week in dollars": {
+   "value": 0,
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "Beast Craft BBQ-Largest single-day over/short this week in dollars": {
+   "value": 0,
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "Little Red Inn-Largest single-day over/short this week in dollars": {
+   "value": 0,
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "Modern Barn-Largest single-day over/short this week in dollars": {
+   "value": 0,
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "The Greenwich-Largest single-day over/short this week in dollars": {
+   "value": 0,
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "Savor-Largest single-day over/short this week in dollars": {
+   "value": 0,
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "Schat's Bakery-Largest single-day over/short this week in dollars": {
+   "value": 0,
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "42nd Street Cafe-Largest single-day over/short this week in dollars": {
+   "value": 0,
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "Brew Bird-Largest single-day over/short this week in dollars": {
+   "value": 0,
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "City Brew Hall-Largest single-day over/short this week in dollars": {
+   "value": 0,
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "Retro Junkie-Largest single-day over/short this week in dollars": {
+   "value": 0,
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "Firebrew-Largest single-day over/short this week in dollars": {
+   "value": 0,
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "Atlas Group-Largest single-day over/short this week in dollars": {
+   "value": 0,
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "Brakeman's Burgers-Largest single-day over/short this week in dollars": {
+   "value": 0,
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "Ola Juice Bar Garden of the Gods-Largest single-day over/short this week in dollars": {
+   "value": 0,
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "Ola Juice Bar Kiowa-Largest single-day over/short this week in dollars": {
+   "value": 0,
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "Piglatin Cochino-Largest single-day over/short this week in dollars": {
+   "value": 0,
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "Gimani-Largest single-day over/short this week in dollars": {
+   "value": 0,
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "Tulipani Pasta-Largest single-day over/short this week in dollars": {
+   "value": 0,
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "Tulipani Park Square-Largest single-day over/short this week in dollars": {
+   "value": 0,
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "Off the Rails BBQ-Largest single-day over/short this week in dollars": {
+   "value": 0,
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "Gather-Largest single-day over/short this week in dollars": {
+   "value": 0,
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "Sur Lie-Largest single-day over/short this week in dollars": {
+   "value": 0,
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "Beadling Club-Largest single-day over/short this week in dollars": {
+   "value": 0,
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "Frisch's-Largest single-day over/short this week in dollars": {
+   "value": 0,
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "Nobby's Pizza-Largest single-day over/short this week in dollars": {
+   "value": 0,
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "EPN 1-Largest single-day over/short this week in dollars": {
+   "value": 0,
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "EPN 2-Largest single-day over/short this week in dollars": {
+   "value": 0,
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "EPN 3-Largest single-day over/short this week in dollars": {
+   "value": 0,
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "EPN 4-Largest single-day over/short this week in dollars": {
+   "value": 0,
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "EPN 5-Largest single-day over/short this week in dollars": {
+   "value": 0,
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "EPN 6-Largest single-day over/short this week in dollars": {
+   "value": 0,
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "EPN 7-Largest single-day over/short this week in dollars": {
+   "value": 0,
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "EPN 8-Largest single-day over/short this week in dollars": {
+   "value": 0,
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "Grits Grill-Largest single-day over/short this week in dollars": {
+   "value": 0,
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "The Dunes-Largest single-day over/short this week in dollars": {
+   "value": 0,
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "Paulie's Pub-Largest single-day over/short this week in dollars": {
+   "value": 0,
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "Paulie's Field Trip-Largest single-day over/short this week in dollars": {
+   "value": 0,
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "Crave Protein-Largest single-day over/short this week in dollars": {
+   "value": 0,
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "Domik's Pizza-Largest single-day over/short this week in dollars": {
+   "value": 0,
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "The Search Bar-Largest single-day over/short this week in dollars": {
+   "value": 0,
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "Wharf 850-Largest single-day over/short this week in dollars": {
+   "value": 0,
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "Mom's Pizza and Pasta-Largest single-day over/short this week in dollars": {
+   "value": 0,
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "Granville-Largest single-day over/short this week in dollars": {
+   "value": 0,
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "Maryland Fried Chicken-Largest single-day over/short this week in dollars": {
+   "value": 0,
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "Roberto's Mexican Food-All accounts reconciled through date": {
+   "value": "2026-08-27",
+   "answeredAt": "2026-08-27T17:00:00Z"
+  },
+  "Roberto's Mexican Food-Exceptions or blockers": {
+   "value": "Account 0276 complete (Heather)",
+   "answeredAt": "2026-08-27T17:00:00Z"
+  },
+  "River Valley Social-Exceptions or blockers": {
+   "value": "August transactions downloaded (Heather)",
+   "answeredAt": "2026-08-27T17:00:00Z"
+  },
+  "Tavern on Kruse-Exceptions or blockers": {
+   "value": "August transactions downloaded (Heather)",
+   "answeredAt": "2026-08-27T17:00:00Z"
+  },
+  "Frisch's-Exceptions or blockers": {
+   "value": "Product entry done; 58 invoices entered team-wide (Marnelle)",
+   "answeredAt": "2026-08-27T17:00:00Z"
+  },
+  "Tulipani Pasta-All accounts reconciled through date": {
+   "value": "2026-08-27",
+   "answeredAt": "2026-08-27T17:00:00Z"
+  },
+  "Tulipani Pasta-Exceptions or blockers": {
+   "value": "Acct 1646 completed (Regiene)",
+   "answeredAt": "2026-08-27T17:00:00Z"
+  },
+  "Sur Lie-All accounts reconciled through date": {
+   "value": "2026-08-27",
+   "answeredAt": "2026-08-27T17:00:00Z"
+  },
+  "Sur Lie-Exceptions or blockers": {
+   "value": "Acct 22001 completed (Regiene)",
+   "answeredAt": "2026-08-27T17:00:00Z"
+  },
+  "Gather-All accounts reconciled through date": {
+   "value": "2026-08-27",
+   "answeredAt": "2026-08-27T17:00:00Z"
+  },
+  "Gather-Exceptions or blockers": {
+   "value": "Acct 71004 completed (Regiene)",
+   "answeredAt": "2026-08-27T17:00:00Z"
+  },
+  "Wally's Pizza Pub-Payroll entered through pay period ending": {
+   "value": "2026-08-27",
+   "answeredAt": "2026-08-27T17:00:00Z"
+  },
+  "Maxwell's - McConnelsville-Payroll entered through pay period ending": {
+   "value": "2026-08-27",
+   "answeredAt": "2026-08-27T17:00:00Z"
+  },
+  "Maxwell's - McConnelsville-EOD reports reviewed for the full week": {
+   "value": true,
+   "answeredAt": "2026-08-27T17:00:00Z"
+  },
+  "Crave Protein-Payroll entered through pay period ending": {
+   "value": "2026-08-27",
+   "answeredAt": "2026-08-27T17:00:00Z"
+  },
+  "Paulie's Pub-All accounts reconciled through date": {
+   "value": "2026-08-27",
+   "answeredAt": "2026-08-27T17:00:00Z"
+  },
+  "Paulie's Pub-Exceptions or blockers": {
+   "value": "Accts 1409 and 7039 completed (Reynalyn)",
+   "answeredAt": "2026-08-27T17:00:00Z"
+  },
+  "Beast Craft BBQ-Cash deposits reconciled, after EOD review": {
+   "value": true,
+   "answeredAt": "2026-08-27T17:00:00Z"
+  },
+  "The Greenwich-All accounts reconciled through date": {
+   "value": "2026-08-27",
+   "answeredAt": "2026-08-27T17:00:00Z"
+  },
+  "The Greenwich-Exceptions or blockers": {
+   "value": "4607 statement completed (Adrianne)",
+   "answeredAt": "2026-08-27T17:00:00Z"
+  },
+  "Schat's Bakery-Exceptions or blockers": {
+   "value": "Cheyenne's P&L and category concern being worked (Adrianne)",
+   "answeredAt": "2026-08-27T17:00:00Z"
+  },
+  "Library IV-All accounts reconciled through date": {
+   "value": "2026-08-28",
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "Library IV-Exceptions or blockers": {
+   "value": "Transactions reconciled (Jia)",
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "Maryland Fried Chicken-All accounts reconciled through date": {
+   "value": "2026-08-28",
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "Maryland Fried Chicken-Exceptions or blockers": {
+   "value": "Acct 7532 completed; August invoices in progress (Reynalyn)",
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "Wally's Pizza Pub-All accounts reconciled through date": {
+   "value": "2026-07-31",
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "Wally's Pizza Pub-Exceptions or blockers": {
+   "value": "July statements completed, August in review (Cy)",
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "Maxwell's - McConnelsville-All accounts reconciled through date": {
+   "value": "2026-07-31",
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "Maxwell's - McConnelsville-Exceptions or blockers": {
+   "value": "July statements completed, August in review (Cy)",
+   "answeredAt": "2026-08-28T17:00:00Z"
+  },
+  "Noodles Kitchen-Exceptions or blockers": {
+   "value": "One statement finished (Marnelle)",
+   "answeredAt": "2026-08-28T17:00:00Z"
+  }
+ }
+}
