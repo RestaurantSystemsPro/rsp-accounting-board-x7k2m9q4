@@ -1,7 +1,7 @@
 name: Daily board update
 on:
   schedule:
-    - cron: "0 13 * * 1-6"   # 6:00 AM Arizona, Monday through Saturday
+    - cron: "0 13 * * *"   # 6:00 AM Arizona, every day
   workflow_dispatch: {}       # manual "Run workflow" button for testing
 
 permissions:
