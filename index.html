@@ -224,7 +224,7 @@ function scoreCell(entity, cell, ent){
   if (cell.key==='CLOSE' && ent.close===false) return {s:'na', v:'n/a', tip:'tracked on Period Close row'};
 
   const a = findAnswer(entity, cell.frags);
-  if (!a) return graceState();
+  if (!a) return {s:'gray', v:'\u2014', tip:'never reported', nr:true};
 
   const answeredAge = ageDays(new Date(a.answeredAt));
   const staleTag = answeredAge > WEEKLY_STALE_DAYS;
@@ -267,8 +267,8 @@ function scoreCell(entity, cell, ent){
 const RANK = {red:3, amber:2, gray:1, green:0, na:-1};
 function scoreEntity(ent){
   const cells = CELLS.map(c => Object.assign({def:c}, scoreCell(ent.n, c, ent)));
-  const worst = cells.reduce((w,c)=> RANK[c.s]>RANK[w]? c.s : w, 'na');
-  return {cells, worst: worst==='na' ? 'gray' : worst};
+  const reported = cells.filter(c => !c.nr && c.s !== 'na' && c.s !== 'gray'); const worst = reported.reduce((w,c)=> RANK[c.s]>RANK[w]? c.s : w, 'na'); const nrCount = cells.filter(c => c.nr).length;
+  return {cells, nrCount, worst: worst==='na' ? 'gray' : worst};
 }
 
 /* ---------------- render ---------------- */
@@ -298,7 +298,7 @@ function render(){
       chip.setAttribute('aria-label', s.ent.n+', status '+s.worst);
       const newest = s.cells.filter(c=>c.def).map(c=>c).length;
       chip.innerHTML =
-        '<span class="name">'+esc(s.ent.n)+'<span class="age">'+s.worst.toUpperCase()+'</span></span>'+
+        '<span class="name">'+esc(s.ent.n)+'<span class="age">'+s.worst.toUpperCase()+(s.nrCount? ' \u00b7 '+s.nrCount+' n/r':'')+'</span></span>'+
         '<span class="cells">'+ s.cells.map(c=>
           '<span class="cell '+c.s+'" title="'+esc(c.tip||'')+'"><span class="t">'+c.def.label+'</span><span class="v">'+esc(String(c.v))+'</span></span>'
         ).join('') + '</span>';
