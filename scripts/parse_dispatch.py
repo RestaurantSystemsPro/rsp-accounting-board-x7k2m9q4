@@ -39,6 +39,8 @@ def fetch_emails():
             subj += part.decode(enc or "utf-8", "ignore") if isinstance(part, bytes) else part
         if not any(mk.lower() in subj.lower() for mk in SUBJECT_MARKERS):
             continue
+        if "role: manager" in subj.lower():
+            continue  # duplicate copy of the SiteAdmin dispatch
         text = ""
         for part in msg.walk():
             ct = part.get_content_type()
@@ -54,9 +56,18 @@ def fetch_emails():
     return bodies
 
 def extract_updates(bodies, known_entities):
-    """Ask Claude to turn freeform team notes into structured board updates."""
-    if not bodies:
-        return {}
+    """One Claude call per email so a single oversized or bad message never kills the run."""
+    all_updates = []
+    for b in bodies:
+        try:
+            parsed = _extract_one(b, known_entities)
+            all_updates.extend(parsed.get("updates", []))
+            print(f"  {b['subject'][:50]}: {len(parsed.get('updates', []))} updates")
+        except Exception as e:
+            print(f"  {b['subject'][:50]}: extraction failed: {e}")
+    return {"updates": all_updates}
+
+def _extract_one(b, known_entities):
     prompt = (
         "You are parsing daily accounting status notes for a restaurant bookkeeping team. "
         "Known entities (use these exact names): " + json.dumps(known_entities) + ". "
@@ -68,7 +79,7 @@ def extract_updates(bodies, known_entities):
         "Balance sheet in balance -> BAL (true/false, or the LAST DATE it balanced as YYYY-MM-DD if stated). Payroll entered through a date -> PAY (date). "
         "Month or period close items -> CLOSE (true/false, or the month-end date closed through as YYYY-MM-DD). Blockers or exceptions -> NOTE (string). "
         "Only include updates actually stated. Respond with ONLY the JSON, no markdown fences.\n\nEMAILS:\n"
-        + "\n---\n".join(b["subject"] + "\n" + b["text"] for b in bodies)
+        + b["subject"] + "\n" + b["text"]
     )
     req = urlreq.Request(
         "https://api.anthropic.com/v1/messages",
@@ -83,8 +94,12 @@ def extract_updates(bodies, known_entities):
             "anthropic-version": "2023-06-01",
         },
     )
-    with urlreq.urlopen(req, timeout=120) as resp:
-        out = json.load(resp)
+    try:
+        with urlreq.urlopen(req, timeout=180) as resp:
+            out = json.load(resp)
+    except Exception as e:
+        body = getattr(e, "read", lambda: b"")()
+        raise RuntimeError(f"API error: {e} {body[:300]!r}")
     text = "".join(c.get("text", "") for c in out.get("content", []))
     text = re.sub(r"^```(json)?|```$", "", text.strip(), flags=re.M).strip()
     return json.loads(text)
