@@ -28,7 +28,7 @@ def fetch_emails():
     since = (datetime.now(timezone.utc) - timedelta(days=LOOKBACK_DAYS)).strftime("%d-%b-%Y")
     m = imaplib.IMAP4_SSL("imap.gmail.com", ssl_context=ssl.create_default_context())
     m.login(addr, pw)
-    m.select("INBOX")
+    m.select('"[Gmail]/All Mail"', readonly=True)
     _, data = m.search(None, f'(SINCE "{since}")')
     bodies = []
     for num in data[0].split():
