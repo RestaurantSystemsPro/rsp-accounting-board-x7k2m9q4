@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-09-09T17:00:53.742781+00:00",
+ "generatedAt": "2026-09-10T16:49:23.024235+00:00",
  "teams": {
   "Team Jia": [
    "Beau Jo's - Idaho Springs",
@@ -214,8 +214,8 @@
    "answeredAt": "2026-08-26T17:00:00Z"
   },
   "Germantown-All accounts reconciled through date": {
-   "value": "2026-08-25",
-   "answeredAt": "2026-08-26T17:00:00Z"
+   "value": "2026-09-08",
+   "answeredAt": "2026-09-09T18:00:00Z"
   },
   "Park Cafe-All accounts reconciled through date": {
    "value": "2026-08-25",
@@ -406,8 +406,8 @@
    "answeredAt": "2026-08-28T17:00:00Z"
   },
   "The Greenwich-Largest single-day over/short this week in dollars": {
-   "value": 22,
-   "answeredAt": "2026-08-28T17:00:00Z"
+   "value": 0,
+   "answeredAt": "2026-09-09T18:00:00Z"
   },
   "Savor-Largest single-day over/short this week in dollars": {
    "value": 0,
@@ -567,7 +567,7 @@
   },
   "The Greenwich-EOD reports reviewed for the full week": {
    "value": true,
-   "answeredAt": "2026-08-28T17:00:00Z"
+   "answeredAt": "2026-09-09T18:00:00Z"
   },
   "The Greenwich-Cash deposits reconciled, after EOD review": {
    "value": "2026-07-24",
@@ -578,12 +578,12 @@
    "answeredAt": "2026-08-29T17:00:00Z"
   },
   "The Greenwich-Payroll entered through pay period ending": {
-   "value": "2026-08-09",
-   "answeredAt": "2026-08-28T17:00:00Z"
+   "value": "2026-08-31",
+   "answeredAt": "2026-09-09T18:00:00Z"
   },
   "The Greenwich-Exceptions or blockers": {
-   "value": "ACCESS RESOLVED: all 7 accounts reconciled or current through 9/7 (Adrianne). Balance sheet still through 4/5, tracing continues. Payroll through 8/9",
-   "answeredAt": "2026-09-08T17:00:00Z"
+   "value": "Training 9/9: EOD current through today (closed Sun-Tue). The 9/3 $22 overage was a petty-cash payout, fixed live with petty cash bank. All 7 accounts reconciled through 9/7. Payroll through 8/31; August close ready once 8/31-start payroll posts. Balance sheet through 4/5, tracing continues",
+   "answeredAt": "2026-09-09T18:00:00Z"
   },
   "Noodles Kitchen-Exceptions or blockers": {
    "value": "One statement finished (Marnelle)",
@@ -591,7 +591,7 @@
   },
   "Little Red Inn-All accounts reconciled through date": {
    "value": "2026-09-07",
-   "answeredAt": "2026-09-08T17:00:00Z"
+   "answeredAt": "2026-09-09T18:00:00Z"
   },
   "Little Red Inn-Exceptions or blockers": {
    "value": "Aug largest O/S $1,301.47 on 8/14, needs review (Adrianne). All 4 Chase accounts current to 9/7",
@@ -639,7 +639,7 @@
   },
   "Beau Jo's - Management-All accounts reconciled through date": {
    "value": "2026-08-31",
-   "answeredAt": "2026-09-08T17:00:00Z"
+   "answeredAt": "2026-09-09T18:00:00Z"
   },
   "Library IV-All accounts reconciled through date": {
    "value": "2026-08-28",
@@ -726,12 +726,12 @@
    "answeredAt": "2026-09-01T17:00:00Z"
   },
   "The Greenwich-All accounts reconciled through date": {
-   "value": "2026-08-27",
-   "answeredAt": "2026-08-27T17:00:00Z"
+   "value": "2026-09-07",
+   "answeredAt": "2026-09-09T18:00:00Z"
   },
   "Savor-All accounts reconciled through date": {
    "value": "2026-09-07",
-   "answeredAt": "2026-09-08T17:00:00Z"
+   "answeredAt": "2026-09-09T18:00:00Z"
   },
   "Sur Lie-All accounts reconciled through date": {
    "value": "2026-08-27",
@@ -841,7 +841,19 @@
    "value": "2026-07-31",
    "answeredAt": "2026-08-28T17:00:00Z"
   },
-  "The Greenwich-All accounts reconciled through date": {"value": "2026-09-07", "answeredAt": "2026-09-09T18:00:00Z"}, "The Greenwich-EOD reports reviewed for the full week": {"value": true, "answeredAt": "2026-09-09T18:00:00Z"}, "The Greenwich-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-09-09T18:00:00Z"}, "The Greenwich-Payroll entered through pay period ending": {"value": "2026-08-31", "answeredAt": "2026-09-09T18:00:00Z"}, "The Greenwich-Exceptions or blockers": {"value": "Training 9/9: EOD current through today (closed Sun-Tue). The 9/3 $22 overage was a petty-cash payout, fixed live with petty cash bank. All 7 accounts reconciled through 9/7. Payroll through 8/31; August close ready once 8/31-start payroll posts. Balance sheet through 4/5, tracing continues", "answeredAt": "2026-09-09T18:00:00Z"}, "Germantown-Balance sheet in balance": {"value": "2026-08-25", "answeredAt": "2026-09-09T18:00:00Z"}, "Germantown-All accounts reconciled through date": {"value": "2026-09-08", "answeredAt": "2026-09-09T18:00:00Z"}, "Germantown-Payroll entered through pay period ending": {"value": "2026-09-01", "answeredAt": "2026-09-09T18:00:00Z"}, "Germantown-Exceptions or blockers": {"value": "Balance sheet last balanced 8/25, break since 9/1; Eli and Melinda to trace and fix. Recon done through 9/8 (Jia, confirmed in training). Payroll entered through period ending 9/1", "answeredAt": "2026-09-09T18:00:00Z"}, "Little Red Inn-All accounts reconciled through date": {"value": "2026-09-07", "answeredAt": "2026-09-09T18:00:00Z"}, "Savor-All accounts reconciled through date": {"value": "2026-09-07", "answeredAt": "2026-09-09T18:00:00Z"}, "Beau Jo's - Management-All accounts reconciled through date": {"value": "2026-08-31", "answeredAt": "2026-09-09T18:00:00Z"}, "Maxwell's - McConnelsville-All accounts reconciled through date": {
+  "Germantown-Balance sheet in balance": {
+   "value": "2026-08-25",
+   "answeredAt": "2026-09-09T18:00:00Z"
+  },
+  "Germantown-Payroll entered through pay period ending": {
+   "value": "2026-09-01",
+   "answeredAt": "2026-09-09T18:00:00Z"
+  },
+  "Germantown-Exceptions or blockers": {
+   "value": "Balance sheet last balanced 8/25, break since 9/1; Eli and Melinda to trace and fix. Recon done through 9/8 (Jia, confirmed in training). Payroll entered through period ending 9/1",
+   "answeredAt": "2026-09-09T18:00:00Z"
+  },
+  "Maxwell's - McConnelsville-All accounts reconciled through date": {
    "value": "2026-07-31",
    "answeredAt": "2026-08-28T17:00:00Z"
   }
