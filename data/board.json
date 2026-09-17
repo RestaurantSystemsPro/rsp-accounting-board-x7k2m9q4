@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-09-17T15:15:00+00:00",
+ "generatedAt": "2026-09-17T15:09:26.075447+00:00",
  "teams": {
   "Team Jia": [
    "Beau Jo's - Idaho Springs",
@@ -206,20 +206,20 @@
    "answeredAt": "2026-08-28T17:00:00Z"
   },
   "Folsom Lake Bowl-Exceptions or blockers": {
-   "value": "BLOCKED: owner unresponsive on statement access; Checking 7301 and Citi 0869/8055/1753 August all waiting (Cy)",
-   "answeredAt": "2026-09-01T17:00:00Z"
-  },
-  "Karrington Rowe-All accounts reconciled through date": {
-   "value": "2026-08-25",
-   "answeredAt": "2026-08-26T17:00:00Z"
-  },
-  "Germantown-All accounts reconciled through date": {
-   "value": "2026-09-08",
+   "value": "BLOCKED on owner statements. Sara to contact John Reisman (number in 9/9 meeting notes) for access (Fred, training 9/9)",
    "answeredAt": "2026-09-09T18:00:00Z"
   },
+  "Karrington Rowe-All accounts reconciled through date": {
+   "value": "2026-09-15",
+   "answeredAt": "2026-09-16T17:00:00Z"
+  },
+  "Germantown-All accounts reconciled through date": {
+   "value": "2026-09-15",
+   "answeredAt": "2026-09-16T17:00:00Z"
+  },
   "Park Cafe-All accounts reconciled through date": {
-   "value": "2026-08-25",
-   "answeredAt": "2026-08-26T17:00:00Z"
+   "value": "2026-09-15",
+   "answeredAt": "2026-09-16T17:00:00Z"
   },
   "Urban Hotdog-Cash deposits reconciled, after EOD review": {
    "value": true,
@@ -230,12 +230,12 @@
    "answeredAt": "2026-08-26T17:00:00Z"
   },
   "42nd Street Cafe-Exceptions or blockers": {
-   "value": "CC Citi 0671 August statement completed; recon folders created (Jan). 2025 backlog ongoing",
-   "answeredAt": "2026-08-29T17:00:00Z"
+   "value": "All 5 accounts reconciled through 8/31. Balance sheet breaks at 1/2/26. Payroll current, next 9/25 (Jan)",
+   "answeredAt": "2026-09-16T17:00:00Z"
   },
   "Beast Craft BBQ-Exceptions or blockers": {
-   "value": "Aug largest O/S -$3,411.24 on 8/18, PRIORITY. Profits 4304 Aug complete; Operating 4301 in progress (Adrianne)",
-   "answeredAt": "2026-09-08T17:00:00Z"
+   "value": "Downloading all 6 accounts to 9/13. Prior flag stands: Aug O/S -$3,411.24 on 8/18 (Adrianne)",
+   "answeredAt": "2026-09-16T17:00:00Z"
   },
   "The Search Bar-Exceptions or blockers": {
    "value": "25 of 31 Aug days flagged, largest $1,661.86 on 8/14; several days over $1,000 (Reynalyn)",
@@ -578,20 +578,20 @@
    "answeredAt": "2026-08-29T17:00:00Z"
   },
   "The Greenwich-Payroll entered through pay period ending": {
-   "value": "2026-08-31",
-   "answeredAt": "2026-09-09T18:00:00Z"
+   "value": "2026-09-06",
+   "answeredAt": "2026-09-16T17:00:00Z"
   },
   "The Greenwich-Exceptions or blockers": {
-   "value": "Training 9/9: EOD current through today (closed Sun-Tue). The 9/3 $22 overage was a petty-cash payout, fixed live with petty cash bank. All 7 accounts reconciled through 9/7. Payroll through 8/31; August close ready once 8/31-start payroll posts. Balance sheet through 4/5, tracing continues",
-   "answeredAt": "2026-09-09T18:00:00Z"
+   "value": "All 7 accounts reconciled through 9/13 (Adrianne). Payroll through 9/6. Balance sheet through 4/5, tracing continues",
+   "answeredAt": "2026-09-16T17:00:00Z"
   },
   "Noodles Kitchen-Exceptions or blockers": {
    "value": "One statement finished (Marnelle)",
    "answeredAt": "2026-08-28T17:00:00Z"
   },
   "Little Red Inn-All accounts reconciled through date": {
-   "value": "2026-09-07",
-   "answeredAt": "2026-09-09T18:00:00Z"
+   "value": "2026-09-13",
+   "answeredAt": "2026-09-16T17:00:00Z"
   },
   "Little Red Inn-Exceptions or blockers": {
    "value": "Aug largest O/S $1,301.47 on 8/14, needs review (Adrianne). All 4 Chase accounts current to 9/7",
@@ -602,16 +602,16 @@
    "answeredAt": "2026-09-01T17:00:00Z"
   },
   "Firebrew-Exceptions or blockers": {
-   "value": "Recon folders created (Jan)",
-   "answeredAt": "2026-08-29T17:00:00Z"
+   "value": "WF 7257 complete, LOC 9277 and C1 6369 through 8/31. Balance sheet breaks at 1/20/26. Payroll current, next 9/25 (Jan)",
+   "answeredAt": "2026-09-16T17:00:00Z"
   },
   "Retro Junkie-Exceptions or blockers": {
-   "value": "Truist 6018 activity confirm via Sara; WF LOC 9277 Aug statement requested from client (Jan)",
-   "answeredAt": "2026-09-01T17:00:00Z"
+   "value": "All 4 accounts through 8/31; balance sheet breaks at 7/28. Payroll current, next 9/19 (Jan). Prior 9/9 items: 8/30 $5,845 mystery deposit and keg-deposit remap cleanup with Eli",
+   "answeredAt": "2026-09-16T17:00:00Z"
   },
   "Schat's Bakery-Exceptions or blockers": {
-   "value": "Aug largest O/S $572.93 on 8/13. 2024 balance sheet complete, sent to Cheyenne; 2025 balanced through 8/31/25 after Paychex mapping fix (Eli). Ask Accountant 2025+2026 entries complete (Adrianne, Anna, Marnelle)",
-   "answeredAt": "2026-09-08T17:00:00Z"
+   "value": "Training 9/9: 2025 balance sheet balanced through 10/12/25 in live session (refund mapping to unclear deposits, sales-tax mapping fixed on 9/23-26 entries). Cheyenne's unpaid-bills list explained: partial payments and personal-card reimbursements; Eli responding",
+   "answeredAt": "2026-09-09T18:00:00Z"
   },
   "Beau Jo's - Idaho Springs-All accounts reconciled through date": {
    "value": "2026-08-28",
@@ -650,8 +650,8 @@
    "answeredAt": "2026-09-01T17:00:00Z"
   },
   "Cafe Verde-All accounts reconciled through date": {
-   "value": "2026-08-28",
-   "answeredAt": "2026-09-01T17:00:00Z"
+   "value": "2026-09-11",
+   "answeredAt": "2026-09-16T17:00:00Z"
   },
   "Nobby's Pizza-All accounts reconciled through date": {
    "value": "2026-08-31",
@@ -662,16 +662,16 @@
    "answeredAt": "2026-09-01T17:00:00Z"
   },
   "Maxwell's - McConnelsville-Payroll entered through pay period ending": {
-   "value": "2026-08-27",
-   "answeredAt": "2026-08-27T17:00:00Z"
+   "value": "2026-09-11",
+   "answeredAt": "2026-09-16T17:00:00Z"
   },
   "Wally's Pizza Pub-Exceptions or blockers": {
-   "value": "July statements completed, August in review (Cy)",
-   "answeredAt": "2026-08-28T17:00:00Z"
+   "value": "Training 9/9: August close blocked: savings recon waiting on invoices (Jeff applied, Cy finishing), all August cash deposits missing from Eldorado Savings recon, July US Foods bills unpaid past 30-day terms: client email needed. Lowe's and 76-station unpaid bills likely personal cards: report to client",
+   "answeredAt": "2026-09-09T18:00:00Z"
   },
   "Maxwell's - McConnelsville-Exceptions or blockers": {
-   "value": "Nearly every Aug day flagged over $20, largest $938.38 on 8/8; needs escalation (Cy)",
-   "answeredAt": "2026-09-08T17:00:00Z"
+   "value": "First National 0819 Aug COMPLETE; payroll to 9/11 (Cy)",
+   "answeredAt": "2026-09-16T17:00:00Z"
   },
   "Paulie's Pub-Exceptions or blockers": {
    "value": "Accts 1409 and 7039 completed (Reynalyn)",
@@ -682,8 +682,8 @@
    "answeredAt": "2026-09-08T17:00:00Z"
   },
   "Savor-Exceptions or blockers": {
-   "value": "Operating 2346 Aug complete 9/7; Sept reconciled through 9/7 (Adrianne)",
-   "answeredAt": "2026-09-08T17:00:00Z"
+   "value": "Operating 2346 reconciled to 9/13; payroll through 9/6, next 9/25 (Adrianne)",
+   "answeredAt": "2026-09-16T17:00:00Z"
   },
   "Barndoor-Cash deposits reconciled, after EOD review": {
    "value": true,
@@ -706,8 +706,8 @@
    "answeredAt": "2026-09-01T17:00:00Z"
   },
   "Sur Lie-Exceptions or blockers": {
-   "value": "AB 3736 Aug complete, O/S clean (Regiene)",
-   "answeredAt": "2026-09-08T17:00:00Z"
+   "value": "Amex Sept complete, AB 3736 to 9/15, O/S clean 9/1-15. Balance sheet breaks at 1/4/26 (Regiene)",
+   "answeredAt": "2026-09-16T17:00:00Z"
   },
   "Frisch's-Exceptions or blockers": {
    "value": "Product entry done; 58 invoices entered team-wide (Marnelle)",
@@ -718,32 +718,32 @@
    "answeredAt": "2026-08-27T17:00:00Z"
   },
   "South Pybus-Exceptions or blockers": {
-   "value": "New: vendors added per Tess; CVB 0937 transactions downloaded to 8/28 (Heather)",
-   "answeredAt": "2026-09-01T17:00:00Z"
+   "value": "Training 9/9: EOD and O/S clean through 9/8; deposits reconciled through 8/29, recon through 8/31. Balance sheet NOT set up: no beginning entry, negative balances; full rebuild needed. Acct 0395 wrongly attached here, marked DNU, belongs to Leavenworth. Late Aug deposits and fees hit early Sept before close",
+   "answeredAt": "2026-09-09T18:00:00Z"
   },
   "South Leavenworth-Exceptions or blockers": {
-   "value": "New: vendors added per Tess (Heather)",
-   "answeredAt": "2026-09-01T17:00:00Z"
+   "value": "Training 9/9: acct 0395 is this store's bank; reconciliations must run here starting Aug 1, currently behind to 8/1. Cash deposits historically ran through Pybus via due-to/due-from (Heather). Target: current to 9/7 this week",
+   "answeredAt": "2026-09-09T18:00:00Z"
   },
   "The Greenwich-All accounts reconciled through date": {
-   "value": "2026-09-07",
-   "answeredAt": "2026-09-09T18:00:00Z"
+   "value": "2026-09-13",
+   "answeredAt": "2026-09-16T17:00:00Z"
   },
   "Savor-All accounts reconciled through date": {
-   "value": "2026-09-07",
-   "answeredAt": "2026-09-09T18:00:00Z"
+   "value": "2026-09-13",
+   "answeredAt": "2026-09-16T17:00:00Z"
   },
   "Sur Lie-All accounts reconciled through date": {
-   "value": "2026-08-27",
-   "answeredAt": "2026-08-27T17:00:00Z"
+   "value": "2026-09-15",
+   "answeredAt": "2026-09-16T17:00:00Z"
   },
   "Gather-All accounts reconciled through date": {
-   "value": "2026-08-27",
-   "answeredAt": "2026-08-27T17:00:00Z"
+   "value": "2026-09-15",
+   "answeredAt": "2026-09-16T17:00:00Z"
   },
   "Gather-Exceptions or blockers": {
-   "value": "Acct 71004 completed (Regiene)",
-   "answeredAt": "2026-08-27T17:00:00Z"
+   "value": "Amex Sept complete, Norway 6655 to 9/15, O/S clean 9/1-15. Balance sheet breaks at 1/4/26 (Regiene)",
+   "answeredAt": "2026-09-16T17:00:00Z"
   },
   "The Dunes-Exceptions or blockers": {
    "value": "6 Aug days flagged over $20, largest -$41.67 on 8/9 (Reynalyn)",
@@ -754,8 +754,8 @@
    "answeredAt": "2026-09-08T17:00:00Z"
   },
   "Maryland Fried Chicken-Exceptions or blockers": {
-   "value": "Acct 7532 completed; August invoices in progress (Reynalyn)",
-   "answeredAt": "2026-08-28T17:00:00Z"
+   "value": "WF 7532 Sept complete; Amex/0550 to 9/14, payroll acct to 9/10, 1779 to 9/2; main 9460 in progress. Payroll entered through 8/31 (Reynalyn)",
+   "answeredAt": "2026-09-16T17:00:00Z"
   },
   "Maryland Fried Chicken-Largest single-day over/short this week in dollars": {
    "value": 272.67,
@@ -798,8 +798,8 @@
    "answeredAt": "2026-08-28T17:00:00Z"
   },
   "Roberto's Mexican Food-All accounts reconciled through date": {
-   "value": "2026-08-27",
-   "answeredAt": "2026-08-27T17:00:00Z"
+   "value": "2026-09-11",
+   "answeredAt": "2026-09-16T17:00:00Z"
   },
   "Roberto's Mexican Food-Exceptions or blockers": {
    "value": "Account 0276 complete (Heather)",
@@ -810,8 +810,8 @@
    "answeredAt": "2026-08-27T17:00:00Z"
   },
   "Tulipani Pasta-Exceptions or blockers": {
-   "value": "Acct 1646 completed (Regiene)",
-   "answeredAt": "2026-08-27T17:00:00Z"
+   "value": "September activity not yet visible on bank side; waiting on statement to start entries (Regiene)",
+   "answeredAt": "2026-09-16T17:00:00Z"
   },
   "Wally's Pizza Pub-Payroll entered through pay period ending": {
    "value": "2026-08-27",
@@ -834,8 +834,8 @@
    "answeredAt": "2026-08-27T17:00:00Z"
   },
   "Maryland Fried Chicken-All accounts reconciled through date": {
-   "value": "2026-08-28",
-   "answeredAt": "2026-08-28T17:00:00Z"
+   "value": "2026-09-02",
+   "answeredAt": "2026-09-16T17:00:00Z"
   },
   "Wally's Pizza Pub-All accounts reconciled through date": {
    "value": "2026-07-31",
@@ -850,10 +850,126 @@
    "answeredAt": "2026-09-09T18:00:00Z"
   },
   "Germantown-Exceptions or blockers": {
-   "value": "Balance sheet last balanced 8/25, break since 9/1; Eli and Melinda to trace and fix. Recon done through 9/8 (Jia, confirmed in training). Payroll entered through period ending 9/1",
+   "value": "Pinnacle payroll/operating/tax all reconciled to 9/15; shared expenses done (Jia)",
+   "answeredAt": "2026-09-16T17:00:00Z"
+  },
+  "Maxwell's - McConnelsville-All accounts reconciled through date": {
+   "value": "2026-08-31",
+   "answeredAt": "2026-09-16T17:00:00Z"
+  },
+  "South Pybus-EOD reports reviewed for the full week": {
+   "value": true,
    "answeredAt": "2026-09-09T18:00:00Z"
   },
-  "Folsom Lake Bowl-Exceptions or blockers": {"value": "BLOCKED on owner statements. Sara to contact John Reisman (number in 9/9 meeting notes) for access (Fred, training 9/9)", "answeredAt": "2026-09-09T18:00:00Z"}, "Karrington Rowe-All accounts reconciled through date": {"value": "2026-09-15", "answeredAt": "2026-09-16T17:00:00Z"}, "Germantown-All accounts reconciled through date": {"value": "2026-09-15", "answeredAt": "2026-09-16T17:00:00Z"}, "Park Cafe-All accounts reconciled through date": {"value": "2026-09-15", "answeredAt": "2026-09-16T17:00:00Z"}, "42nd Street Cafe-Exceptions or blockers": {"value": "All 5 accounts reconciled through 8/31. Balance sheet breaks at 1/2/26. Payroll current, next 9/25 (Jan)", "answeredAt": "2026-09-16T17:00:00Z"}, "Beast Craft BBQ-Exceptions or blockers": {"value": "Downloading all 6 accounts to 9/13. Prior flag stands: Aug O/S -$3,411.24 on 8/18 (Adrianne)", "answeredAt": "2026-09-16T17:00:00Z"}, "The Greenwich-Payroll entered through pay period ending": {"value": "2026-09-06", "answeredAt": "2026-09-16T17:00:00Z"}, "The Greenwich-Exceptions or blockers": {"value": "All 7 accounts reconciled through 9/13 (Adrianne). Payroll through 9/6. Balance sheet through 4/5, tracing continues", "answeredAt": "2026-09-16T17:00:00Z"}, "Little Red Inn-All accounts reconciled through date": {"value": "2026-09-13", "answeredAt": "2026-09-16T17:00:00Z"}, "Firebrew-Exceptions or blockers": {"value": "WF 7257 complete, LOC 9277 and C1 6369 through 8/31. Balance sheet breaks at 1/20/26. Payroll current, next 9/25 (Jan)", "answeredAt": "2026-09-16T17:00:00Z"}, "Retro Junkie-Exceptions or blockers": {"value": "All 4 accounts through 8/31; balance sheet breaks at 7/28. Payroll current, next 9/19 (Jan). Prior 9/9 items: 8/30 $5,845 mystery deposit and keg-deposit remap cleanup with Eli", "answeredAt": "2026-09-16T17:00:00Z"}, "Schat's Bakery-Exceptions or blockers": {"value": "Training 9/9: 2025 balance sheet balanced through 10/12/25 in live session (refund mapping to unclear deposits, sales-tax mapping fixed on 9/23-26 entries). Cheyenne's unpaid-bills list explained: partial payments and personal-card reimbursements; Eli responding", "answeredAt": "2026-09-09T18:00:00Z"}, "Cafe Verde-All accounts reconciled through date": {"value": "2026-09-11", "answeredAt": "2026-09-16T17:00:00Z"}, "Maxwell's - McConnelsville-Payroll entered through pay period ending": {"value": "2026-09-11", "answeredAt": "2026-09-16T17:00:00Z"}, "Wally's Pizza Pub-Exceptions or blockers": {"value": "Training 9/9: August close blocked: savings recon waiting on invoices (Jeff applied, Cy finishing), all August cash deposits missing from Eldorado Savings recon, July US Foods bills unpaid past 30-day terms: client email needed. Lowe's and 76-station unpaid bills likely personal cards: report to client", "answeredAt": "2026-09-09T18:00:00Z"}, "Maxwell's - McConnelsville-Exceptions or blockers": {"value": "First National 0819 Aug COMPLETE; payroll to 9/11 (Cy)", "answeredAt": "2026-09-16T17:00:00Z"}, "Savor-Exceptions or blockers": {"value": "Operating 2346 reconciled to 9/13; payroll through 9/6, next 9/25 (Adrianne)", "answeredAt": "2026-09-16T17:00:00Z"}, "Sur Lie-Exceptions or blockers": {"value": "Amex Sept complete, AB 3736 to 9/15, O/S clean 9/1-15. Balance sheet breaks at 1/4/26 (Regiene)", "answeredAt": "2026-09-16T17:00:00Z"}, "South Pybus-Exceptions or blockers": {"value": "Training 9/9: EOD and O/S clean through 9/8; deposits reconciled through 8/29, recon through 8/31. Balance sheet NOT set up: no beginning entry, negative balances; full rebuild needed. Acct 0395 wrongly attached here, marked DNU, belongs to Leavenworth. Late Aug deposits and fees hit early Sept before close", "answeredAt": "2026-09-09T18:00:00Z"}, "South Leavenworth-Exceptions or blockers": {"value": "Training 9/9: acct 0395 is this store's bank; reconciliations must run here starting Aug 1, currently behind to 8/1. Cash deposits historically ran through Pybus via due-to/due-from (Heather). Target: current to 9/7 this week", "answeredAt": "2026-09-09T18:00:00Z"}, "The Greenwich-All accounts reconciled through date": {"value": "2026-09-13", "answeredAt": "2026-09-16T17:00:00Z"}, "Savor-All accounts reconciled through date": {"value": "2026-09-13", "answeredAt": "2026-09-16T17:00:00Z"}, "Sur Lie-All accounts reconciled through date": {"value": "2026-09-15", "answeredAt": "2026-09-16T17:00:00Z"}, "Gather-All accounts reconciled through date": {"value": "2026-09-15", "answeredAt": "2026-09-16T17:00:00Z"}, "Gather-Exceptions or blockers": {"value": "Amex Sept complete, Norway 6655 to 9/15, O/S clean 9/1-15. Balance sheet breaks at 1/4/26 (Regiene)", "answeredAt": "2026-09-16T17:00:00Z"}, "Maryland Fried Chicken-Exceptions or blockers": {"value": "WF 7532 Sept complete; Amex/0550 to 9/14, payroll acct to 9/10, 1779 to 9/2; main 9460 in progress. Payroll entered through 8/31 (Reynalyn)", "answeredAt": "2026-09-16T17:00:00Z"}, "Roberto's Mexican Food-All accounts reconciled through date": {"value": "2026-09-11", "answeredAt": "2026-09-16T17:00:00Z"}, "Tulipani Pasta-Exceptions or blockers": {"value": "September activity not yet visible on bank side; waiting on statement to start entries (Regiene)", "answeredAt": "2026-09-16T17:00:00Z"}, "Maryland Fried Chicken-All accounts reconciled through date": {"value": "2026-09-02", "answeredAt": "2026-09-16T17:00:00Z"}, "Germantown-Exceptions or blockers": {"value": "Pinnacle payroll/operating/tax all reconciled to 9/15; shared expenses done (Jia)", "answeredAt": "2026-09-16T17:00:00Z"}, "Maxwell's - McConnelsville-All accounts reconciled through date": {"value": "2026-08-31", "answeredAt": "2026-09-16T17:00:00Z"}, "South Pybus-EOD reports reviewed for the full week": {"value": true, "answeredAt": "2026-09-09T18:00:00Z"}, "South Pybus-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-09-09T18:00:00Z"}, "South Pybus-Cash deposits reconciled, after EOD review": {"value": "2026-08-29", "answeredAt": "2026-09-09T18:00:00Z"}, "South Pybus-All accounts reconciled through date": {"value": "2026-08-31", "answeredAt": "2026-09-09T18:00:00Z"}, "South Pybus-Balance sheet in balance": {"value": false, "answeredAt": "2026-09-09T18:00:00Z"}, "42nd Street Cafe-Balance sheet in balance": {"value": "2026-01-01", "answeredAt": "2026-09-16T17:00:00Z"}, "Firebrew-All accounts reconciled through date": {"value": "2026-08-31", "answeredAt": "2026-09-16T17:00:00Z"}, "Firebrew-Balance sheet in balance": {"value": "2026-01-19", "answeredAt": "2026-09-16T17:00:00Z"}, "Retro Junkie-All accounts reconciled through date": {"value": "2026-08-31", "answeredAt": "2026-09-16T17:00:00Z"}, "Retro Junkie-Balance sheet in balance": {"value": "2026-07-27", "answeredAt": "2026-09-16T17:00:00Z"}, "Piglatin Cochino-Exceptions or blockers": {"value": "9155 Stripe/Toast deposits complete, Aug payments 90%; 7876 Aug deposits complete; pending cash/DoorDash/Eagle Rock/check images via Eli (Jan)", "answeredAt": "2026-09-16T17:00:00Z"}, "Clancy's-All accounts reconciled through date": {"value": "2026-09-11", "answeredAt": "2026-09-16T17:00:00Z"}, "Clancy's-Payroll entered through pay period ending": {"value": "2026-09-13", "answeredAt": "2026-09-16T17:00:00Z"}, "Cafe Verde-Payroll entered through pay period ending": {"value": "2026-09-13", "answeredAt": "2026-09-16T17:00:00Z"}, "Maryland Fried Chicken-Payroll entered through pay period ending": {"value": "2026-08-31", "answeredAt": "2026-09-16T17:00:00Z"}, "The Dunes-Payroll entered through pay period ending": {"value": "2026-09-13", "answeredAt": "2026-09-16T17:00:00Z"}, "Grits Grill-All accounts reconciled through date": {"value": "2026-09-10", "answeredAt": "2026-09-16T17:00:00Z"}, "Grits Grill-Payroll entered through pay period ending": {"value": "2026-09-13", "answeredAt": "2026-09-16T17:00:00Z"}, "Sur Lie-Balance sheet in balance": {"value": "2026-01-04", "answeredAt": "2026-09-16T17:00:00Z"}, "Gather-Balance sheet in balance": {"value": "2026-01-04", "answeredAt": "2026-09-16T17:00:00Z"}, "Urban Hotdog-Exceptions or blockers": {"value": "ABQ FT WF Savings 5946 Aug COMPLETE (Anna)", "answeredAt": "2026-09-16T17:00:00Z"}, "Cochino-Exceptions or blockers": {"value": "Expenses 6849 Sept payments/deposits to 9/14; 4 COGS invoices left; checks pending payee names via Eli (Anna)", "answeredAt": "2026-09-16T17:00:00Z"}, "Coati-Exceptions or blockers": {"value": "7392 Sept payments to 9/14; deposits in progress; checks and COGS invoices pending (Anna)", "answeredAt": "2026-09-16T17:00:00Z"}, "SoNapa Daytona Beach-All accounts reconciled through date": {"value": "2026-08-31", "answeredAt": "2026-09-16T17:00:00Z"}, "SoNapa Daytona Beach-Exceptions or blockers": {"value": "July and August COMPLETE; Sept invoices entered to 9/10 (Eli)", "answeredAt": "2026-09-16T17:00:00Z"}, "Schat's Bakery-All accounts reconciled through date": {"value": "2026-09-12", "answeredAt": "2026-09-16T17:00:00Z"}, "Little Red Inn-Payroll entered through pay period ending": {"value": "2026-09-02", "answeredAt": "2026-09-16T17:00:00Z"}, "Savor-Payroll entered through pay period ending": {"value": "2026-09-06", "answeredAt": "2026-09-16T17:00:00Z"}, "_zzC": {
+  "South Pybus-Largest single-day over/short this week in dollars": {
+   "value": 0,
+   "answeredAt": "2026-09-09T18:00:00Z"
+  },
+  "South Pybus-Cash deposits reconciled, after EOD review": {
+   "value": "2026-08-29",
+   "answeredAt": "2026-09-09T18:00:00Z"
+  },
+  "South Pybus-All accounts reconciled through date": {
+   "value": "2026-08-31",
+   "answeredAt": "2026-09-09T18:00:00Z"
+  },
+  "South Pybus-Balance sheet in balance": {
+   "value": false,
+   "answeredAt": "2026-09-09T18:00:00Z"
+  },
+  "42nd Street Cafe-Balance sheet in balance": {
+   "value": "2026-01-01",
+   "answeredAt": "2026-09-16T17:00:00Z"
+  },
+  "Firebrew-All accounts reconciled through date": {
+   "value": "2026-08-31",
+   "answeredAt": "2026-09-16T17:00:00Z"
+  },
+  "Firebrew-Balance sheet in balance": {
+   "value": "2026-01-19",
+   "answeredAt": "2026-09-16T17:00:00Z"
+  },
+  "Retro Junkie-All accounts reconciled through date": {
+   "value": "2026-08-31",
+   "answeredAt": "2026-09-16T17:00:00Z"
+  },
+  "Retro Junkie-Balance sheet in balance": {
+   "value": "2026-07-27",
+   "answeredAt": "2026-09-16T17:00:00Z"
+  },
+  "Piglatin Cochino-Exceptions or blockers": {
+   "value": "9155 Stripe/Toast deposits complete, Aug payments 90%; 7876 Aug deposits complete; pending cash/DoorDash/Eagle Rock/check images via Eli (Jan)",
+   "answeredAt": "2026-09-16T17:00:00Z"
+  },
+  "Clancy's-All accounts reconciled through date": {
+   "value": "2026-09-11",
+   "answeredAt": "2026-09-16T17:00:00Z"
+  },
+  "Clancy's-Payroll entered through pay period ending": {
+   "value": "2026-09-13",
+   "answeredAt": "2026-09-16T17:00:00Z"
+  },
+  "Cafe Verde-Payroll entered through pay period ending": {
+   "value": "2026-09-13",
+   "answeredAt": "2026-09-16T17:00:00Z"
+  },
+  "Maryland Fried Chicken-Payroll entered through pay period ending": {
+   "value": "2026-08-31",
+   "answeredAt": "2026-09-16T17:00:00Z"
+  },
+  "The Dunes-Payroll entered through pay period ending": {
+   "value": "2026-09-13",
+   "answeredAt": "2026-09-16T17:00:00Z"
+  },
+  "Grits Grill-All accounts reconciled through date": {
+   "value": "2026-09-10",
+   "answeredAt": "2026-09-16T17:00:00Z"
+  },
+  "Grits Grill-Payroll entered through pay period ending": {
+   "value": "2026-09-13",
+   "answeredAt": "2026-09-16T17:00:00Z"
+  },
+  "Sur Lie-Balance sheet in balance": {
+   "value": "2026-01-04",
+   "answeredAt": "2026-09-16T17:00:00Z"
+  },
+  "Gather-Balance sheet in balance": {
+   "value": "2026-01-04",
+   "answeredAt": "2026-09-16T17:00:00Z"
+  },
+  "Urban Hotdog-Exceptions or blockers": {
+   "value": "ABQ FT WF Savings 5946 Aug COMPLETE (Anna)",
+   "answeredAt": "2026-09-16T17:00:00Z"
+  },
+  "Cochino-Exceptions or blockers": {
+   "value": "Expenses 6849 Sept payments/deposits to 9/14; 4 COGS invoices left; checks pending payee names via Eli (Anna)",
+   "answeredAt": "2026-09-16T17:00:00Z"
+  },
+  "Coati-Exceptions or blockers": {
+   "value": "7392 Sept payments to 9/14; deposits in progress; checks and COGS invoices pending (Anna)",
+   "answeredAt": "2026-09-16T17:00:00Z"
+  },
+  "SoNapa Daytona Beach-All accounts reconciled through date": {
+   "value": "2026-08-31",
+   "answeredAt": "2026-09-16T17:00:00Z"
+  },
+  "SoNapa Daytona Beach-Exceptions or blockers": {
+   "value": "July and August COMPLETE; Sept invoices entered to 9/10 (Eli)",
+   "answeredAt": "2026-09-16T17:00:00Z"
+  },
+  "Schat's Bakery-All accounts reconciled through date": {
+   "value": "2026-09-12",
+   "answeredAt": "2026-09-16T17:00:00Z"
+  },
+  "Little Red Inn-Payroll entered through pay period ending": {
+   "value": "2026-09-02",
+   "answeredAt": "2026-09-16T17:00:00Z"
+  },
+  "Savor-Payroll entered through pay period ending": {
+   "value": "2026-09-06",
+   "answeredAt": "2026-09-16T17:00:00Z"
+  },
+  "_zzC": {
    "value": "2026-07-31",
    "answeredAt": "2026-08-28T17:00:00Z"
   }
