@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-09-17T17:25:07.512795+00:00",
+ "generatedAt": "2026-09-18T13:45:00+00:00",
  "teams": {
   "Team Jia": [
    "Beau Jo's - Idaho Springs",
@@ -195,19 +195,19 @@
  "answers": {
   "Folsom Lake Bowl-EOD reports reviewed for the full week": {
    "value": true,
-   "answeredAt": "2026-08-26T17:00:00Z"
+   "answeredAt": "2026-09-17T20:00:00Z"
   },
   "Folsom Lake Bowl-All accounts reconciled through date": {
    "value": "2026-08-31",
    "answeredAt": "2026-09-17T15:30:00Z"
   },
   "Folsom Lake Bowl-Largest single-day over/short this week in dollars": {
-   "value": 14700.33,
-   "answeredAt": "2026-09-17T15:30:00Z"
+   "value": 0,
+   "answeredAt": "2026-09-17T20:00:00Z"
   },
   "Folsom Lake Bowl-Exceptions or blockers": {
-   "value": "9/9 (Cy): statements obtained, blocker cleared. All 4 accounts Aug COMPLETE; payroll 4/16-9/3 entered. FLAG: over/shorts 8/5-8/19 total $14,700.33, needs owner conversation. Balance sheet broken 1/1 through 8/30, rebuild needed",
-   "answeredAt": "2026-09-17T15:30:00Z"
+   "value": "RESOLVED by Fred 9/17: the $14,700 Aug over/short is fixed, O/S current through 9/16. Aug recon complete; payroll through 9/17 (Cy). Balance sheet rebuild 1/1-8/30 still open",
+   "answeredAt": "2026-09-17T20:00:00Z"
   },
   "Karrington Rowe-All accounts reconciled through date": {
    "value": "2026-09-15",
@@ -243,27 +243,27 @@
   },
   "Beau Jo's - Idaho Springs-Largest single-day over/short this week in dollars": {
    "value": 0,
-   "answeredAt": "2026-08-28T17:00:00Z"
+   "answeredAt": "2026-09-17T20:00:00Z"
   },
   "Beau Jo's - Arvada-Largest single-day over/short this week in dollars": {
    "value": 0,
-   "answeredAt": "2026-08-28T17:00:00Z"
+   "answeredAt": "2026-09-17T20:00:00Z"
   },
   "Beau Jo's - Lone Tree-Largest single-day over/short this week in dollars": {
    "value": 0,
    "answeredAt": "2026-08-28T17:00:00Z"
   },
   "Beau Jo's - Evergreen-Largest single-day over/short this week in dollars": {
-   "value": 0,
-   "answeredAt": "2026-08-28T17:00:00Z"
+   "value": 48.98,
+   "answeredAt": "2026-09-17T20:00:00Z"
   },
   "Beau Jo's - Denver-Largest single-day over/short this week in dollars": {
    "value": 0,
-   "answeredAt": "2026-08-28T17:00:00Z"
+   "answeredAt": "2026-09-17T20:00:00Z"
   },
   "Beau Jo's - Fort Collins-Largest single-day over/short this week in dollars": {
    "value": 0,
-   "answeredAt": "2026-08-28T17:00:00Z"
+   "answeredAt": "2026-09-17T20:00:00Z"
   },
   "Beau Jo's - Management-Largest single-day over/short this week in dollars": {
    "value": 0,
@@ -586,8 +586,8 @@
    "answeredAt": "2026-09-16T17:00:00Z"
   },
   "Noodles Kitchen-Exceptions or blockers": {
-   "value": "One statement finished (Marnelle)",
-   "answeredAt": "2026-08-28T17:00:00Z"
+   "value": "August Amex done (Eli 9/17)",
+   "answeredAt": "2026-09-17T20:00:00Z"
   },
   "Little Red Inn-All accounts reconciled through date": {
    "value": "2026-09-13",
@@ -642,8 +642,8 @@
    "answeredAt": "2026-09-17T15:30:00Z"
   },
   "Library IV-All accounts reconciled through date": {
-   "value": "2026-08-28",
-   "answeredAt": "2026-08-28T17:00:00Z"
+   "value": "2026-09-13",
+   "answeredAt": "2026-09-17T20:00:00Z"
   },
   "Library IV-Payroll entered through pay period ending": {
    "value": "2026-08-28",
@@ -710,12 +710,12 @@
    "answeredAt": "2026-09-16T17:00:00Z"
   },
   "Frisch's-Exceptions or blockers": {
-   "value": "KeyBank 9750 and CapOne 4181 Aug COMPLETE; Sept weeks 1-2 in progress incl KeyBank 8108; remarks email out to Sean Walsh; payroll through 9/8 (Regiene)",
-   "answeredAt": "2026-09-17T15:30:00Z"
+   "value": "All three accounts complete through 9/11; Sept week 3 pulls underway. Alanna's concerns prioritized, corrective outputs made, email to follow (Regiene 9/17)",
+   "answeredAt": "2026-09-17T20:00:00Z"
   },
   "Tavern on Kruse-Exceptions or blockers": {
-   "value": "NW 3926 Aug COMPLETE 9/9; September in progress (Heather)",
-   "answeredAt": "2026-09-17T15:30:00Z"
+   "value": "NW 3926 Sept to 9/11; BOA 0652, Citi 9467, Amex 95000 Sept in progress (Heather 9/17)",
+   "answeredAt": "2026-09-17T20:00:00Z"
   },
   "South Pybus-Exceptions or blockers": {
    "value": "Training 9/9: EOD and O/S clean through 9/8; deposits reconciled through 8/29, recon through 8/31. Balance sheet NOT set up: no beginning entry, negative balances; full rebuild needed. Acct 0395 wrongly attached here, marked DNU, belongs to Leavenworth. Late Aug deposits and fees hit early Sept before close",
@@ -746,8 +746,8 @@
    "answeredAt": "2026-09-16T17:00:00Z"
   },
   "The Dunes-Exceptions or blockers": {
-   "value": "Towne 4051 Sept entered to 9/15, payroll acct 1657 to 9/11 (Reynalyn)",
-   "answeredAt": "2026-09-17T15:30:00Z"
+   "value": "Towne 4051 Sept to 9/15. Amex Roxie 16008 Dec 2025-Aug 2026 backlog in progress, ask-question created (Reynalyn 9/17)",
+   "answeredAt": "2026-09-17T20:00:00Z"
   },
   "Grits Grill-Exceptions or blockers": {
    "value": "SYSTEMIC: 29 of 31 Aug days flagged over $20, largest -$239.59 on 8/2; owner conversation needed (Reynalyn)",
@@ -762,8 +762,8 @@
    "answeredAt": "2026-09-08T17:00:00Z"
   },
   "River Valley Social-All accounts reconciled through date": {
-   "value": "2026-08-31",
-   "answeredAt": "2026-09-08T17:00:00Z"
+   "value": "2026-09-15",
+   "answeredAt": "2026-09-17T20:00:00Z"
   },
   "River Valley Social-Exceptions or blockers": {
    "value": "August transactions downloaded (Heather)",
@@ -778,16 +778,16 @@
    "answeredAt": "2026-09-08T17:00:00Z"
   },
   "Library IV-Exceptions or blockers": {
-   "value": "Sept week 2: CapOne 0692 and TD 2814 COMPLETE; TD 6271, CapOne 7907, BOA 0019 started; Chase CCs 1015/8658 statements pulled. Passcode access resolved (Jia)",
-   "answeredAt": "2026-09-17T15:30:00Z"
+   "value": "TD 2814/6271, CapOne 7907/0692, BOA 0019 complete through week 2 Sept; Chase CCs 1015/8658 month-end statements in processing (Jia 9/17)",
+   "answeredAt": "2026-09-17T20:00:00Z"
   },
   "Hops/Scotch-Exceptions or blockers": {
-   "value": "Sept ops 9331 in progress. Payroll STILL BLOCKED on Amanda passcode, third week, followed up 9/15 (Jia). UHP last-week transactions downloading",
-   "answeredAt": "2026-09-17T15:30:00Z"
+   "value": "9331 and 0594 complete through week 2 Sept. Payroll access follow-up with Amanda STILL pending (Jia 9/17)",
+   "answeredAt": "2026-09-17T20:00:00Z"
   },
   "The Side Bar-Exceptions or blockers": {
-   "value": "Sept ops 7481 in progress. Payroll blocked with Hops/Scotch on same Amanda passcode (Jia)",
-   "answeredAt": "2026-09-17T15:30:00Z"
+   "value": "7481 complete through week 2 Sept. Payroll blocked with Hops/Scotch on Amanda passcode (Jia 9/17)",
+   "answeredAt": "2026-09-17T20:00:00Z"
   },
   "Beau Jo's - Management-Exceptions or blockers": {
    "value": "3181, 3202, 5536 reconciled to 9/11; GL deposits to 9/11. CD interest income $14,137.79 posted; 401k/Roth GL $22,473.49 for 5/29-6/18 pay dates; awaiting Aug-Sept 401k match. Arvada 8/24-8/27 O/S resolved. Period 6 legacy P&L conversion done, all 7 entities (Jia)",
@@ -814,8 +814,8 @@
    "answeredAt": "2026-09-17T15:30:00Z"
   },
   "Wally's Pizza Pub-Payroll entered through pay period ending": {
-   "value": "2026-08-27",
-   "answeredAt": "2026-08-27T17:00:00Z"
+   "value": "2026-09-17",
+   "answeredAt": "2026-09-17T20:00:00Z"
   },
   "Maxwell's - McConnelsville-EOD reports reviewed for the full week": {
    "value": true,
@@ -938,8 +938,8 @@
    "answeredAt": "2026-09-16T17:00:00Z"
   },
   "Urban Hotdog-Exceptions or blockers": {
-   "value": "ABQ balance sheet balanced through 2/28, Eli working forward. ABQ FT WF Savings 5946 Aug complete",
-   "answeredAt": "2026-09-17T15:30:00Z"
+   "value": "ABQ FT WF 0865 and 5946 Aug COMPLETE. ABQ balance sheet balanced through 2/28, Eli working forward",
+   "answeredAt": "2026-09-17T20:00:00Z"
   },
   "Cochino-Exceptions or blockers": {
    "value": "Expenses 6849 Sept in progress; payroll paycheck 9/18 already complete",
@@ -970,8 +970,8 @@
    "answeredAt": "2026-09-16T17:00:00Z"
   },
   "Folsom Lake Bowl-Payroll entered through pay period ending": {
-   "value": "2026-09-03",
-   "answeredAt": "2026-09-17T15:30:00Z"
+   "value": "2026-09-17",
+   "answeredAt": "2026-09-17T20:00:00Z"
   },
   "Folsom Lake Bowl-Balance sheet in balance": {
    "value": false,
@@ -1058,8 +1058,8 @@
    "answeredAt": "2026-09-17T15:30:00Z"
   },
   "Nobby's Pizza-Exceptions or blockers": {
-   "value": "August COMPLETE across Amex 1007, PNC 8826, CapOne 1989, Amex 1003; Sept weeks 1-2 in progress; clarification email out to Sean Walsh (Regiene)",
-   "answeredAt": "2026-09-17T15:30:00Z"
+   "value": "Amex 1007, PNC 8826, Amex 1003 pulled through 9/16, in progress (Regiene 9/17)",
+   "answeredAt": "2026-09-17T20:00:00Z"
   },
   "Beadling Club-Payroll entered through pay period ending": {
    "value": "2026-09-08",
@@ -1098,8 +1098,8 @@
    "answeredAt": "2026-09-17T15:30:00Z"
   },
   "Owl Cafe-Exceptions or blockers": {
-   "value": "Balance sheet rebuild in progress: balanced through 3/29 with Jan-Mar mapping fixes posted (Eli 9/14)",
-   "answeredAt": "2026-09-17T15:30:00Z"
+   "value": "Operating 7905 Aug COMPLETE (Marnelle 9/17). Balance sheet rebuild: balanced through 3/29, Eli working forward",
+   "answeredAt": "2026-09-17T20:00:00Z"
   },
   "Atlas Group-Exceptions or blockers": {
    "value": "Savings 5158 Jun/Jul/Aug COMPLETE (Cy); Operating 4661 Aug complete; Catering 9017 payments done; Chase 8193 June complete, Aug payments to 8/27 (team)",
@@ -1110,12 +1110,12 @@
    "answeredAt": "2026-09-17T15:30:00Z"
   },
   "Ephemera-Exceptions or blockers": {
-   "value": "Operating 8325 Aug updated; Sept 1-14 statement in progress; payroll paycheck 9/11 complete (Marnelle)",
-   "answeredAt": "2026-09-17T15:30:00Z"
+   "value": "Sept 1-14 in progress; Stripe transfers in deposits plus payments awaiting invoices (Marnelle 9/17)",
+   "answeredAt": "2026-09-17T20:00:00Z"
   },
   "Ola Juice Bar Kiowa-Exceptions or blockers": {
-   "value": "Expenses 8580 Aug COMPLETE 9/10; Sept 1-14 in progress (Adrianne/Marnelle)",
-   "answeredAt": "2026-09-17T15:30:00Z"
+   "value": "Sept 1-14 in progress; blocked on What Chef Wants invoices from invoicing team (Marnelle 9/17)",
+   "answeredAt": "2026-09-17T20:00:00Z"
   },
   "SoNapa New Smyrna Beach-Exceptions or blockers": {
    "value": "Chase Savings 6220 Aug COMPLETE (Marnelle 9/11); Checking 8619 payments to 8/31, 4 deposits left (Anna)",
@@ -1133,9 +1133,141 @@
    "value": "2026-09-04",
    "answeredAt": "2026-09-17T15:30:00Z"
   },
-  
-   "value": "2026-07-31",
-   "answeredAt": "2026-08-28T17:00:00Z"
+  "Beau Jo's - Fort Collins-EOD reports reviewed for the full week": {
+   "value": true,
+   "answeredAt": "2026-09-17T20:00:00Z"
+  },
+  "Beau Jo's - Fort Collins-Cash deposits reconciled, after EOD review": {
+   "value": "2026-09-10",
+   "answeredAt": "2026-09-17T20:00:00Z"
+  },
+  "Beau Jo's - Fort Collins-Balance sheet in balance": {
+   "value": "2026-04-04",
+   "answeredAt": "2026-09-17T20:00:00Z"
+  },
+  "Beau Jo's - Fort Collins-Payroll entered through pay period ending": {
+   "value": "2026-09-13",
+   "answeredAt": "2026-09-17T20:00:00Z"
+  },
+  "Beau Jo's - Fort Collins-Exceptions or blockers": {
+   "value": "Fred 9/17 walkthrough: EOD and O/S good through 9/16 (one paid-out on 9/16). Cash deposits recorded through 9/10. Recon 9/11. Balance sheet not balanced as of 4/5. Payroll 9/13. No period close yet",
+   "answeredAt": "2026-09-17T20:00:00Z"
+  },
+  "Beau Jo's - Idaho Springs-EOD reports reviewed for the full week": {
+   "value": true,
+   "answeredAt": "2026-09-17T20:00:00Z"
+  },
+  "Beau Jo's - Idaho Springs-Cash deposits reconciled, after EOD review": {
+   "value": "2026-08-30",
+   "answeredAt": "2026-09-17T20:00:00Z"
+  },
+  "Beau Jo's - Idaho Springs-Balance sheet in balance": {
+   "value": "2026-04-19",
+   "answeredAt": "2026-09-17T20:00:00Z"
+  },
+  "Beau Jo's - Idaho Springs-Payroll entered through pay period ending": {
+   "value": "2026-09-13",
+   "answeredAt": "2026-09-17T20:00:00Z"
+  },
+  "Beau Jo's - Idaho Springs-Exceptions or blockers": {
+   "value": "Fred 9/17: EOD through 9/16; O/S good through 9/11, 9/12-9/16 paid-outs need actual cash deposits entered. Cash deposits reconciled only through 8/30. Recon 9/11. Balance sheet balanced through 4/19. Payroll 9/13",
+   "answeredAt": "2026-09-17T20:00:00Z"
+  },
+  "Beau Jo's - Arvada-EOD reports reviewed for the full week": {
+   "value": true,
+   "answeredAt": "2026-09-17T20:00:00Z"
+  },
+  "Beau Jo's - Arvada-Cash deposits reconciled, after EOD review": {
+   "value": "2026-09-09",
+   "answeredAt": "2026-09-17T20:00:00Z"
+  },
+  "Beau Jo's - Arvada-Balance sheet in balance": {
+   "value": "2026-04-18",
+   "answeredAt": "2026-09-17T20:00:00Z"
+  },
+  "Beau Jo's - Arvada-Payroll entered through pay period ending": {
+   "value": "2026-09-13",
+   "answeredAt": "2026-09-17T20:00:00Z"
+  },
+  "Beau Jo's - Arvada-Exceptions or blockers": {
+   "value": "Sara 9/17: EOD through 9/16, no O/S over $20. Cash reconciled to 9/9, missing 9/5-9/7. Recon 9/11. Balance sheet out as of 4/19. Payroll 9/13",
+   "answeredAt": "2026-09-17T20:00:00Z"
+  },
+  "Beau Jo's - Denver-EOD reports reviewed for the full week": {
+   "value": true,
+   "answeredAt": "2026-09-17T20:00:00Z"
+  },
+  "Beau Jo's - Denver-Cash deposits reconciled, after EOD review": {
+   "value": "2026-09-08",
+   "answeredAt": "2026-09-17T20:00:00Z"
+  },
+  "Beau Jo's - Denver-Balance sheet in balance": {
+   "value": "2026-04-18",
+   "answeredAt": "2026-09-17T20:00:00Z"
+  },
+  "Beau Jo's - Denver-Payroll entered through pay period ending": {
+   "value": "2026-09-13",
+   "answeredAt": "2026-09-17T20:00:00Z"
+  },
+  "Beau Jo's - Denver-Exceptions or blockers": {
+   "value": "Sara 9/17: EOD through 9/16, no O/S over $20. Cash deposits missing 8/29, 9/1, 9/2, rest done to 9/8. Recon 9/11. Balance sheet out as of 4/19. Payroll 9/13",
+   "answeredAt": "2026-09-17T20:00:00Z"
+  },
+  "Beau Jo's - Evergreen-EOD reports reviewed for the full week": {
+   "value": true,
+   "answeredAt": "2026-09-17T20:00:00Z"
+  },
+  "Beau Jo's - Evergreen-Cash deposits reconciled, after EOD review": {
+   "value": "2026-08-27",
+   "answeredAt": "2026-09-17T20:00:00Z"
+  },
+  "Beau Jo's - Evergreen-Balance sheet in balance": {
+   "value": "2026-05-16",
+   "answeredAt": "2026-09-17T20:00:00Z"
+  },
+  "Beau Jo's - Evergreen-Payroll entered through pay period ending": {
+   "value": "2026-09-13",
+   "answeredAt": "2026-09-17T20:00:00Z"
+  },
+  "Beau Jo's - Evergreen-Exceptions or blockers": {
+   "value": "Sara 9/17: EOD through 9/16. O/S $48.98 on 9/7. Cash deposits only through 8/27, missing 8/9 deposit. Recon 9/11. Balance sheet out as of 5/17. Payroll 9/13",
+   "answeredAt": "2026-09-17T20:00:00Z"
+  },
+  "Beau Jo's - Lone Tree-Payroll entered through pay period ending": {
+   "value": "2026-09-13",
+   "answeredAt": "2026-09-17T20:00:00Z"
+  },
+  "Beau Jo's - Management-Payroll entered through pay period ending": {
+   "value": "2026-09-13",
+   "answeredAt": "2026-09-17T20:00:00Z"
+  },
+  "Hops/Scotch-All accounts reconciled through date": {
+   "value": "2026-09-13",
+   "answeredAt": "2026-09-17T20:00:00Z"
+  },
+  "The Side Bar-All accounts reconciled through date": {
+   "value": "2026-09-13",
+   "answeredAt": "2026-09-17T20:00:00Z"
+  },
+  "Urban Hotdog Nob Hill-All accounts reconciled through date": {
+   "value": "2026-08-31",
+   "answeredAt": "2026-09-17T20:00:00Z"
+  },
+  "Owl Cafe-All accounts reconciled through date": {
+   "value": "2026-08-31",
+   "answeredAt": "2026-09-17T20:00:00Z"
+  },
+  "Gimani-All accounts reconciled through date": {
+   "value": "2026-09-11",
+   "answeredAt": "2026-09-17T20:00:00Z"
+  },
+  "Beadling Club-All accounts reconciled through date": {
+   "value": "2026-09-11",
+   "answeredAt": "2026-09-17T20:00:00Z"
+  },
+  "Frisch's-All accounts reconciled through date": {
+   "value": "2026-09-11",
+   "answeredAt": "2026-09-17T20:00:00Z"
   }
  }
 }
