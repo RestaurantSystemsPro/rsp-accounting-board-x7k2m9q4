@@ -1,415 +1,444 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RSP Accounting Status Board</title>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vivio's Warren Owner Dashboard</title>
 <style>
-  :root{
-    --paper:#F7F6F2; --ink:#1B2430; --muted:#6B7480; --line:#E3E1D9;
-    --rsp:#2E6E9E; --rsp-soft:#E0F0FC;
-    --red:#B3362B; --red-soft:#F6E3E1;
-    --amber:#C08A1E; --amber-soft:#F7EDD8;
-    --green:#2E7D4F; --green-soft:#E2EFE7;
-    --gray:#9AA3AD; --gray-soft:#EEEFF1;
-    --font-head:'Archivo',system-ui,sans-serif;
-    --font-body:'IBM Plex Sans',system-ui,sans-serif;
-    --font-mono:'IBM Plex Mono',ui-monospace,monospace;
+:root{
+  --rsp:#2e6e9e; --rsp-2:#5c9ccc; --rsp-deep:#1d4b6e;
+  --bg:#f4f6f9; --card:#ffffff; --ink:#15202b; --muted:#5d6b7a; --line:#dfe6ee;
+  --high:#c62828; --med:#e08a00; --ok:#2e7d51; --na:#8b97a4;
+  --high-bg:#fdecec; --med-bg:#fdf5e4; --ok-bg:#eaf6ef; --na-bg:#f1f3f6;
+}
+:root:not([data-theme="light"]){}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#10161d; --card:#18212b; --ink:#e8eef5; --muted:#9aa8b6; --line:#2a3744;
+    --high:#ff6b6b; --med:#f2b23c; --ok:#4cc38a; --na:#7d8b99;
+    --high-bg:#2c1a1c; --med-bg:#2c2618; --ok-bg:#16291f; --na-bg:#1e2730;
   }
-  *{box-sizing:border-box;margin:0;padding:0}
-  body{background:var(--paper);color:var(--ink);font-family:var(--font-body);font-size:14px;line-height:1.45}
-  a{color:var(--rsp)}
-  .wrap{max-width:1280px;margin:0 auto;padding:20px 24px 80px}
-
-  header.top{display:flex;align-items:baseline;justify-content:space-between;gap:16px;border-bottom:3px solid var(--ink);padding-bottom:12px;margin-bottom:16px;flex-wrap:wrap}
-  .brand h1{font-family:var(--font-head);font-weight:800;font-size:26px;letter-spacing:-.02em}
-  .brand .sub{color:var(--muted);font-size:12px;margin-top:2px}
-  .asof{font-family:var(--font-mono);font-size:12px;color:var(--muted)}
-  .controls{display:flex;gap:8px;align-items:center}
-  .btn{font-family:var(--font-body);font-weight:600;font-size:12px;border:1px solid var(--ink);background:#fff;color:var(--ink);padding:7px 12px;border-radius:6px;cursor:pointer}
-  .btn:hover{background:var(--ink);color:#fff}
-  .btn.primary{background:var(--rsp);border-color:var(--rsp);color:#fff}
-  .btn.primary:hover{filter:brightness(.92)}
-  .btn:focus-visible{outline:3px solid var(--rsp);outline-offset:2px}
-  input[type=file]{display:none}
-
-  .strip{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:10px;margin-bottom:22px}
-  .stat{background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px 16px;position:relative;overflow:hidden}
-  .stat .lbl{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-  .stat .val{font-family:var(--font-head);font-weight:800;font-size:40px;line-height:1.05;margin-top:2px}
-  .stat .note{font-size:11px;color:var(--muted);margin-top:2px}
-  .stat.red{border-color:var(--red)} .stat.red .val{color:var(--red)}
-  .stat.red::before{content:'';position:absolute;left:0;top:0;bottom:0;width:6px;background:var(--red)}
-  .stat.amber .val{color:var(--amber)}
-  .stat.green .val{color:var(--green)}
-  .stat.gray .val{color:var(--gray)}
-
-  .legend{display:flex;gap:14px;align-items:center;font-size:11px;color:var(--muted);margin:0 0 14px;flex-wrap:wrap}
-  .legend .k{display:inline-flex;align-items:center;gap:5px}
-  .dot{width:10px;height:10px;border-radius:3px;display:inline-block}
-  .dot.red{background:var(--red)} .dot.amber{background:var(--amber)} .dot.green{background:var(--green)} .dot.gray{background:var(--gray)}
-
-  .lane{margin-bottom:26px}
-  .lane-head{display:flex;align-items:center;gap:10px;background:var(--rsp);color:#fff;border-radius:8px 8px 0 0;padding:8px 14px}
-  .lane-head h2{font-family:var(--font-head);font-weight:700;font-size:15px;letter-spacing:.01em}
-  .lane-head .count{font-family:var(--font-mono);font-size:11px;opacity:.9}
-  .lane-head .redflag{margin-left:auto;font-family:var(--font-mono);font-size:11px;background:rgba(255,255,255,.15);padding:2px 8px;border-radius:20px}
-  .lane-body{background:#fff;border:1px solid var(--line);border-top:0;border-radius:0 0 8px 8px;padding:10px;display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:8px}
-
-  .chip{border:1px solid var(--line);border-radius:8px;padding:9px 10px;cursor:pointer;background:#fff;text-align:left;width:100%}
-  .chip:hover{border-color:var(--ink)}
-  .chip:focus-visible{outline:3px solid var(--rsp);outline-offset:2px}
-  .chip.red{border-left:5px solid var(--red);background:linear-gradient(0deg,var(--red-soft) 0%,#fff 55%)}
-  .chip.amber{border-left:5px solid var(--amber)}
-  .chip.green{border-left:5px solid var(--green)}
-  .chip.gray{border-left:5px solid var(--gray)}
-  .chip .name{font-weight:600;font-size:13px;display:flex;justify-content:space-between;gap:8px}
-  .chip .age{font-family:var(--font-mono);font-size:10px;color:var(--muted);white-space:nowrap}
-  .cells{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-top:8px}
-  .cell{border-radius:4px;padding:3px 2px;text-align:center;background:var(--gray-soft)}
-  .cell .t{font-size:8.5px;font-weight:600;letter-spacing:.04em;color:var(--muted);text-transform:uppercase;display:block}
-  .cell .v{font-family:var(--font-mono);font-size:9.5px;display:block;margin-top:1px;color:var(--ink)}
-  .cell.red{background:var(--red-soft)} .cell.red .v{color:var(--red);font-weight:600}
-  .cell.amber{background:var(--amber-soft)} .cell.amber .v{color:var(--amber)}
-  .cell.green{background:var(--green-soft)} .cell.green .v{color:var(--green)}
-  .cell.na{background:transparent;border:1px dashed var(--line)} .cell.na .v{color:var(--line)}
-
-  /* drawer */
-  .overlay{position:fixed;inset:0;background:rgba(27,36,48,.45);display:none;z-index:40}
-  .drawer{position:fixed;top:0;right:0;bottom:0;width:min(520px,100%);background:var(--paper);z-index:50;transform:translateX(102%);transition:transform .22s ease;box-shadow:-8px 0 30px rgba(0,0,0,.18);display:flex;flex-direction:column}
-  @media (prefers-reduced-motion: reduce){.drawer{transition:none}}
-  .drawer.open{transform:none}
-  .overlay.open{display:block}
-  .drawer header{padding:16px 18px;border-bottom:2px solid var(--ink);display:flex;justify-content:space-between;align-items:center;gap:10px}
-  .drawer header h3{font-family:var(--font-head);font-size:18px;font-weight:700}
-  .drawer .body{padding:12px 18px;overflow:auto}
-  .qrow{display:grid;grid-template-columns:1fr 120px;gap:10px;padding:9px 10px;border-bottom:1px solid var(--line);align-items:center}
-  .qrow .q{font-size:12.5px}
-  .qrow .a{font-family:var(--font-mono);font-size:11px;text-align:right}
-  .pill{display:inline-block;border-radius:20px;padding:2px 9px;font-weight:600}
-  .pill.red{background:var(--red-soft);color:var(--red)} .pill.amber{background:var(--amber-soft);color:var(--amber)}
-  .pill.green{background:var(--green-soft);color:var(--green)} .pill.gray{background:var(--gray-soft);color:var(--muted)}
-  .qrow .meta{grid-column:1/-1;font-family:var(--font-mono);font-size:10px;color:var(--muted)}
-  .banner{background:var(--rsp-soft);border:1px solid var(--rsp);border-radius:8px;padding:10px 14px;font-size:12.5px;margin-bottom:16px}
-  .banner b{color:var(--rsp)}
-  footer{margin-top:34px;font-size:11px;color:var(--muted);border-top:1px solid var(--line);padding-top:10px;font-family:var(--font-mono)}
-  @media (max-width:760px){.strip{grid-template-columns:1fr 1fr}}
+}
+:root[data-theme="dark"]{
+  --bg:#10161d; --card:#18212b; --ink:#e8eef5; --muted:#9aa8b6; --line:#2a3744;
+  --high:#ff6b6b; --med:#f2b23c; --ok:#4cc38a; --na:#7d8b99;
+  --high-bg:#2c1a1c; --med-bg:#2c2618; --ok-bg:#16291f; --na-bg:#1e2730;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin:0 auto;padding:0 16px 56px}
+header.top{background:linear-gradient(135deg,var(--rsp-deep),var(--rsp));color:#fff;padding:26px 0 30px;margin-bottom:-20px}
+header.top .wrap{padding-bottom:0}
+.brandline{font-size:11px;letter-spacing:.16em;text-transform:uppercase;opacity:.82;margin-bottom:6px}
+h1{margin:0;font-size:27px;font-weight:650;letter-spacing:-.01em}
+.sub{margin-top:5px;font-size:13.5px;opacity:.9}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:14px;margin:30px 0 22px}
+.tile{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 17px;
+  box-shadow:0 1px 3px rgba(20,35,55,.07)}
+.tile .lab{font-size:11px;letter-spacing:.10em;text-transform:uppercase;color:var(--muted);font-weight:650}
+.tile .big{font-size:29px;font-weight:680;letter-spacing:-.02em;margin:7px 0 2px;font-variant-numeric:tabular-nums}
+.tile .note{font-size:12.5px;color:var(--muted)}
+.up{color:var(--ok);font-weight:650}.down{color:var(--high);font-weight:650}
+.warn{color:var(--med);font-weight:650}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:18px;
+  box-shadow:0 1px 3px rgba(20,35,55,.07);overflow:hidden}
+.card>h2{margin:0;padding:13px 18px;font-size:13px;letter-spacing:.09em;text-transform:uppercase;
+  color:#fff;background:var(--rsp);font-weight:650}
+.card .body{padding:16px 18px}
+.flag{display:flex;gap:13px;padding:13px 0;border-bottom:1px solid var(--line)}
+.flag:last-child{border-bottom:0;padding-bottom:0}
+.flag:first-child{padding-top:0}
+.sev{flex:0 0 66px;font-size:10.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
+  text-align:center;padding:4px 0;border-radius:5px;height:24px}
+.sev.h{background:var(--high-bg);color:var(--high)}
+.sev.m{background:var(--med-bg);color:var(--med)}
+.sev.o{background:var(--ok-bg);color:var(--ok)}
+.ftxt{flex:1;min-width:0}
+.ftxt b{display:block;font-size:14.5px;margin-bottom:3px}
+.ftxt span{font-size:13.5px;color:var(--muted)}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:650;white-space:nowrap}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.pill{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+  padding:3px 8px;border-radius:20px}
+.p-ok{background:var(--ok-bg);color:var(--ok)}
+.p-flag{background:var(--high-bg);color:var(--high)}
+.p-med{background:var(--med-bg);color:var(--med)}
+.p-na{background:var(--na-bg);color:var(--na)}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.kv{display:flex;justify-content:space-between;gap:12px;padding:6px 0;border-bottom:1px dashed var(--line);font-size:13.5px}
+.kv:last-child{border-bottom:0}
+.kv span:last-child{font-variant-numeric:tabular-nums;font-weight:600;white-space:nowrap}
+.meter{margin-bottom:13px}
+.meter .mh{display:flex;justify-content:space-between;font-size:13px;margin-bottom:5px}
+.bar{height:7px;border-radius:5px;background:var(--na-bg);overflow:hidden}
+.bar i{display:block;height:100%;border-radius:5px}
+.dutyname{font-weight:550;min-width:230px}
+.sect td{background:var(--na-bg);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--muted);font-weight:700}
+footer{text-align:center;font-size:12px;color:var(--muted);padding:26px 16px 0}
+@media (max-width:620px){
+  h1{font-size:22px}.tile .big{font-size:25px}
+  .sev{flex-basis:58px}
+}
 </style>
 </head>
 <body>
+<header class="top">
 <div class="wrap">
-  <header class="top">
-    <div class="brand">
-      <h1>Accounting Status Board</h1>
-      <div class="sub">Restaurant Systems Pro · exception-first client tracking</div>
-    </div>
-    <div class="controls">
-      <span class="asof" id="asof"></span>
-      <button class="btn" id="demoBtn">Show demo data</button>
-      <label class="btn primary" for="fileIn">Load answers file</label>
-      <input type="file" id="fileIn" accept=".json,application/json">
-    </div>
-  </header>
-
-  <div class="banner" id="banner">
-    <b>Pre-launch state.</b> No answers loaded yet. Every checkpoint shows gray until the team's first manager log entries land. Gray turns red on its own when a checkpoint goes past its cadence with no answer — silence is treated as a miss. Use <b>Show demo data</b> to preview scoring, or <b>Load answers file</b> to feed real data from the pull script.
-  </div>
-
-  <div class="strip">
-    <div class="stat red"><span class="lbl">Red · act today</span><span class="val" id="sRed">0</span><span class="note">said no, over threshold, or silent past deadline</span></div>
-    <div class="stat amber"><span class="lbl">Amber · due soon</span><span class="val" id="sAmber">0</span><span class="note">approaching cadence limit</span></div>
-    <div class="stat green"><span class="lbl">Green · current</span><span class="val" id="sGreen">0</span><span class="note">answered and inside cadence</span></div>
-    <div class="stat gray"><span class="lbl">Silent</span><span class="val" id="sGray">0</span><span class="note">never answered, still in grace</span></div>
-  </div>
-
-  <div class="legend">
-    <span class="k"><span class="dot red"></span> red = no / over $20 / stale past cadence</span>
-    <span class="k"><span class="dot amber"></span> amber = due within 2 days</span>
-    <span class="k"><span class="dot green"></span> green = current</span>
-    <span class="k"><span class="dot gray"></span> gray = never reported / no answer yet, in grace window</span>
-    <span class="k">cells: EOD · O/S $ · DEP · RECON · BAL · PAY · CLOSE</span>
-  </div>
-
-  <div id="board"></div>
-
-  <footer>
-    Scoring: weekly items stale 7 days after last answer (grace runs from launch date for never-answered). Close items due day 5 after month end, review day 7, stale after the 8th. Over/short red above $20. Client color = worst checkpoint. Data schema for the pull script: {"generatedAt": ISO, "answers": {"&lt;Entity&gt;-&lt;Question&gt;": {"value": ..., "answeredAt": ISO}}}
-  </footer>
+<div class="brandline">Restaurant Systems Pro &middot; Owner Alerts</div>
+<h1>Vivio's Warren</h1>
+<div class="sub">Updated through Monday, September 21, 2026 &middot; week of Monday, September 21 &middot; prepared for Mijo Alanis</div>
 </div>
-
-<div class="overlay" id="overlay"></div>
-<aside class="drawer" id="drawer" aria-label="Client detail">
-  <header><h3 id="dTitle"></h3><button class="btn" id="dClose">Close</button></header>
-  <div class="body" id="dBody"></div>
-</aside>
-
+</header>
+<div class="wrap">
+<div class="tiles">
+<div class="tile">
+<div class="lab">Monday's Sales</div>
+<div class="big">$2,744.28</div>
+<div class="note">Level with the last four Mondays ($2,746.18, <span class="down">-0.07%</span>) &middot; plan $4,708.19 &middot; last year $5,885.24</div>
+</div>
+<div class="tile">
+<div class="lab">Cut before it is worked</div>
+<div class="big down">$650.43</div>
+<div class="note">Payroll above target on Tuesday ($337.12) and Wednesday ($313.31). Tuesday first, this morning.</div>
+</div>
+<div class="tile">
+<div class="lab">Monday labor</div>
+<div class="big down">29.48%</div>
+<div class="note">$808.98 on $2,744.28 against the 22.25% bar &middot; 60.82 hours worked on a 38.00 hour schedule</div>
+</div>
+<div class="tile">
+<div class="lab">Prime cost, week ended 09-20</div>
+<div class="big warn">60.06%</div>
+<div class="note">Target 58.87%, about $428.65 over with draft at a normal cost &middot; 54.02% as printed, lifted by a one time draft count swing</div>
+</div>
+<div class="tile">
+<div class="lab">Cash with no count behind it</div>
+<div class="big down">$5,304.15</div>
+<div class="note">Last week, five nights, Sunday's $673.07 now confirmed &middot; Monday's $544.36 waiting on its count</div>
+</div>
+<div class="tile">
+<div class="lab">Open flags</div>
+<div class="big">13</div>
+<div class="note"><span class="down">9 high</span> &middot; <span class="warn">4 medium</span> &middot; Tuesday's schedule and the uncounted cash are the two to close today</div>
+</div>
+</div>
+<div class="card">
+<h2>Close this first: take about 9 hours off Tuesday's schedule this morning</h2>
+<div class="body">
+<p style="margin:0 0 13px;font-size:14px">The rest of this week has not been worked yet, so this is the one number that can still be changed. The posted schedule for Tuesday through Sunday carries <b>$5,124.24</b> of payroll. Tuesday and Wednesday hold <b>$650.43 above the 21.05% target</b> against plan. Monday also showed that shifts are being worked beyond the posted schedule, so the real exposure is larger than the schedule shows.</p>
+<div class="scroll"><table id="fwdtbl">
+<thead><tr><th>Day</th><th class="num">Scheduled hours</th><th class="num">Scheduled payroll</th><th class="num">Plan</th><th class="num">Supported at 21.05%</th><th class="num">Above target</th><th class="num">Recent same day</th><th>Call</th></tr></thead>
+<tbody></tbody>
+</table></div>
+<p style="margin:14px 0 0;font-size:13.5px;color:var(--muted)">Recent same day is this year's average for that weekday over the last four weeks, a check on how busy the day is likely to be. Thursday and Friday are scheduled under target. Saturday reads over its plan but recent Saturdays have run well above it, so it stays staffed.</p>
+</div>
+</div>
+<div class="card">
+<h2>Flags for the owner</h2>
+<div class="body">
+<div class="flag"><div class="sev h">High</div><div class="ftxt">
+<b>Cut Tuesday's schedule first, this morning: it carries $337.12 of payroll above target</b>
+<span>Tuesday is scheduled at 43.00 hours and $792.46. At 21.05% the $2,163.14 plan supports $455.34, and even the recent Tuesday average of $2,975.27 supports only $626.30, so between $166.17 and $337.12 of today's schedule is above target. That is about 9 hours at the $18.37 average scheduled rate. Take them from the non-tipped positions, where the money is.</span>
+</div></div>
+<div class="flag"><div class="sev h">High</div><div class="ftxt">
+<b>Wednesday is next: $313.31 above target on the schedule</b>
+<span>48.50 hours and $895.46 scheduled against $582.15 supported by the $2,765.54 plan, and $719.97 at the recent Wednesday average of $3,420.28. Trim about 9.5 hours before tomorrow opens. Together Tuesday and Wednesday hold $650.43 of payroll above target that can still be cut. Thursday and Friday are scheduled under target and should be left alone. Saturday reads $114.97 over its $3,161.67 plan but recent Saturdays have run above $5,000, so keep Saturday staffed.</span>
+</div></div>
+<div class="flag"><div class="sev h">High</div><div class="ftxt">
+<b>Monday ran 22.82 hours over its own schedule, 29.48% labor against the 22.25% bar</b>
+<span>60.82 hours worked against 38.00 scheduled, $808.98 of payroll on $2,744.28 of sales, $231.31 above the 21.05% target. Sales matched the recent Monday run rate, so the overage came from hours, not from a soft day. The extra hours added roughly $111 at about $4.86 an hour, which is floor pay, so the posted schedule appears to leave out server hours. If the rest of the week works the same way, each day lands about $100 above what its schedule shows. Every shift worked should be on the schedule before it is approved.</span>
+</div></div>
+<div class="flag"><div class="sev h">High</div><div class="ftxt">
+<b>$5,304.15 of last week's cash closed with no counted deposit, and Sunday's $673.07 is now confirmed</b>
+<span>Five of seven nights closed with no counted number and no counter named: Monday $755.70, Tuesday $371.10, Thursday $830.16, Saturday $2,674.12 and Sunday $673.07. Monday's log also came in blank, so Sunday's count is not coming on its own. This week starts with Monday's $544.36 of expected cash waiting on its count. Wednesday and Friday last week prove it works when it is done: Joseph Raven counted to within 69 cents both nights.</span>
+</div></div>
+<div class="flag"><div class="sev h">High</div><div class="ftxt">
+<b>Sunday's closing log was never completed, five of last week's seven nights have no log</b>
+<span>All nine questions blank for Sunday: no closing manager, no deposit, no 86s, no equipment, no complaints or comps, no callouts. Monday, Tuesday, Thursday, Saturday and Sunday all closed with no record. Monday 09-21 is blank so far and its late close answers are expected on the next morning's log.</span>
+</div></div>
+<div class="flag"><div class="sev h">High</div><div class="ftxt">
+<b>The paid out log has been empty three days running, Saturday, Sunday and Monday</b>
+<span>Three straight days with no paid out, including the season's biggest Saturday, each next to a deposit nobody counted. That is the combination that lets cash for entertainment, security, cleaning or bonuses leave the drawer unrecorded. The closer should answer directly each night whether any cash left the drawer, and every paid out needs a receipt number.</span>
+</div></div>
+<div class="flag"><div class="sev h">High</div><div class="ftxt">
+<b>GFS kraft food trays jumped 88.77%, from $21.99 to $41.51</b>
+<span>GFS 165200, 3 pound paper trays, priced Monday. A near doubling on a disposable usually means a pack size change or a substituted item. Confirm the case count and the live price with the GFS rep before the next order, and ask for the old item back if it was substituted. Every other price change Monday was under 4%, the largest being hot giardiniera up 3.84%.</span>
+</div></div>
+<div class="flag"><div class="sev h">High</div><div class="ftxt">
+<b>Week ended 09-20: draft beer counted more product than it bought, and liquor ran $765.44 over</b>
+<span>Draft printed a negative cost of -$1,539.35, which means more draft was on hand at Sunday's count than at the prior count plus everything bought. That happens when kegs are counted in a location for the first time, or when a keg delivery has not been uploaded. It is a one time swing, and it pulls the week's cost down with it. Read as a group without draft, bottle, liquor, non alcoholic and wine ran 22.67% against 20.25%, $388.15 over, the same pattern as prior weeks. Liquor alone ran 25.79% against 18.00% on a $9,829.90 liquor week. Wine carried no cost at all on $254.34 of sales, so wine is not being counted. Check that every keg is in a location with its delivery uploaded, and walk the liquor pour and comp record from Saturday.</span>
+</div></div>
+<div class="flag"><div class="sev h">High</div><div class="ftxt">
+<b>Seven more purchase orders were marked placed after the goods had arrived</b>
+<span>Atlas, Birdman Breads, Frog Holler, Petitpren, Tri County and two GFS orders, all delivered 09-17 to 09-19, were marked placed on 09-21. That makes fifteen in a row. An order entered after delivery cannot hold purchasing to its allotment or catch a price before it is paid, and the $500 approval step never gets a chance to happen. Orders go in before the truck, then get checked in against the invoice.</span>
+</div></div>
+<div class="flag"><div class="sev m">Medium</div><div class="ftxt">
+<b>Eight products added Monday need an inventory location before Sunday's count</b>
+<span>Atlas black beans in brine; GFS mixed salad blend, great northern beans, fresh cucumbers, diced roma tomatoes and 32 ounce black bowls with lids; Petitpren CC Black Raspberry and VA Z-S Grape. The 28 products carried from last week also need to be confirmed as located, 36 in all. A product with no location is bought into cost and never counted, so it reads as fully used. The count is Sunday 09-27.</span>
+</div></div>
+<div class="flag"><div class="sev m">Medium</div><div class="ftxt">
+<b>The week ended 09-13 is still waiting to be costed</b>
+<span>The week ended 09-20 is now costed and on the Budget Variance card below. The week before it still needs its last deliveries uploaded and its count applied. Confirm the Carmela delivery of 09-16 is in as well.</span>
+</div></div>
+<div class="flag"><div class="sev m">Medium</div><div class="ftxt">
+<b>Waste has been recorded at $0.00 on every line for an eighth straight week</b>
+<span>Nothing is being written down as waste, so every cost figure is calculated as if the store throws nothing away. The Monday waste sheets were due yesterday. Start with the kitchen: spoiled produce, dropped plates and comped remakes.</span>
+</div></div>
+<div class="flag"><div class="sev m">Medium</div><div class="ftxt">
+<b>Price moves over 5% still waiting on confirmation</b>
+<span>Forks +15.35%, foam containers +12.21% and citrus chipotle barbecue sauce +5.27% from 09-14; Petitpren Bud Light 20 loose bottles +11.02% and RB Sugar Free +8.97% from 08-27; and the romaine line from 08-21 that went $3.00 to $23.25 and back the same day.</span>
+</div></div>
+<div class="flag"><div class="sev o">Good</div><div class="ftxt">
+<b>Monday matched its recent run rate almost to the dollar</b>
+<span>$2,744.28 against a $2,746.18 average for the last four Mondays. Sales are steady. What moved labor was the 22.82 extra hours, which is fully in the store's control.</span>
+</div></div>
+<div class="flag"><div class="sev o">Good</div><div class="ftxt">
+<b>Last week closed at $36,194.54, seven of seven days over plan</b>
+<span>51.13% over plan and 20.90% over the same week last year, with hourly labor at 22.90%, under the 23.01% bar. Invoices are moving again, with seven deliveries brought in Monday.</span>
+</div></div>
+</div>
+</div>
+<div class="card">
+<h2>Sales, week of September 21</h2>
+<div class="body">
+<div class="scroll"><table id="weektbl">
+<thead><tr><th>Day</th><th class="num">Actual</th><th class="num">Plan</th><th class="num">Recent same day</th><th class="num">vs recent</th><th class="num">Last year</th></tr></thead>
+<tbody></tbody>
+</table></div>
+<div class="kv" style="margin-top:12px"><span>Week to date, Monday</span><span>$2,744.28</span></div>
+<div class="kv"><span>Plan for the week</span><span>$26,637.76</span></div>
+<div class="kv"><span>Recent same days, whole week</span><span>$27,430.01</span></div>
+<div class="kv"><span>Same week last year</span><span>$33,297.19</span></div>
+<p style="margin:12px 0 0;font-size:12.5px;color:var(--muted)">Recent same day is the average of this year's last four of that weekday. Last year's Monday, September 22, 2025 was an unusually large day, so Monday is read against the recent Mondays. No holiday falls in this week.</p>
+</div>
+</div>
+<div class="card">
+<h2>Labor, week of September 21</h2>
+<div class="body">
+<div class="scroll"><table id="labortbl">
+<thead><tr><th>Day</th><th class="num">Hours</th><th class="num">Scheduled</th><th class="num">Payroll</th><th class="num">Labor %</th><th class="num">Target at 21.05%</th><th class="num">Over target</th></tr></thead>
+<tbody></tbody>
+</table></div>
+<p style="margin:12px 0 0;font-size:12.5px;color:var(--muted)">Worked days use actual hours and payroll against actual sales. Days not yet worked show the posted schedule against the plan.</p>
+</div>
+</div>
+<div class="card">
+<h2>Budget Variance &middot; week ended September 20</h2>
+<div class="body">
+<div class="grid2">
+<div>
+<div class="kv"><span><b>Prime cost, draft at a normal cost</b></span><span class="warn">60.06% <small style="color:var(--muted)">vs 58.87%</small></span></div>
+<div class="kv"><span>Prime cost above target</span><span class="down">$428.65</span></div>
+<div class="kv"><span>Prime cost as printed</span><span>54.02%</span></div>
+<div class="kv"><span>Total cost of goods, draft at a normal cost</span><span class="warn">24.40% <small style="color:var(--muted)">vs 23.53%</small></span></div>
+<div class="kv"><span>Hourly payroll</span><span class="warn">23.28% <small style="color:var(--muted)">vs 23.01%</small></span></div>
+<div class="kv"><span>Total payroll with salaries and taxes</span><span class="warn">35.66% <small style="color:var(--muted)">vs 35.35%</small></span></div>
+</div>
+<div>
+<div class="kv"><span>Food cost</span><span class="up">26.68% <small style="color:var(--muted)">vs 27.00%</small></span></div>
+<div class="kv"><span>Beverage group without draft</span><span class="down">22.67% <small style="color:var(--muted)">vs 20.25%</small></span></div>
+<div class="kv"><span>Liquor</span><span class="down">25.79% <small style="color:var(--muted)">vs 18.00%</small></span></div>
+<div class="kv"><span>Draft beer, as counted</span><span class="down">-49.93% <small style="color:var(--muted)">vs 21.00%</small></span></div>
+<div class="kv"><span>Waste recorded, all lines</span><span class="down">$0.00</span></div>
+<div class="kv"><span>Gross sales, all seven days</span><span>$36,194.54</span></div>
+</div>
+</div>
+<p style="margin:14px 0 0;font-size:13.5px;color:var(--muted)">Food landed on target at 26.68%, $54.57 under. Beverage lines are read together rather than one at a time. Draft counted more product on hand than was bought, a one time swing from kegs newly counted in a location or a keg delivery not yet uploaded, so the week is shown with draft at its normal cost. Without draft, the beverage group ran $388.15 over, led by liquor at $765.44 over. Server payroll ran $217.96 over its target while kitchen was close to plan. The week before, ended September 6, closed at 73.87% prime cost against 63.10%.</p>
+</div>
+</div>
+<div class="card">
+<h2>Cash trail</h2>
+<div class="body">
+<div class="scroll"><table>
+<thead><tr><th>Night</th><th class="num">Gross</th><th class="num">Paid out</th><th class="num">Expected cash</th><th class="num">Counted</th><th>Counted by</th><th class="num">Proves to</th><th>Banked same day</th></tr></thead>
+<tbody>
+<tr><td>Mon Sep 21</td><td class="num">$2,744.28</td><td class="num">$0.00</td><td class="num">$544.36</td><td class="num warn">awaiting</td><td style="color:var(--na)">expected on the next morning's log</td><td class="num warn">pending</td><td><span class="pill p-med">pending</span></td></tr>
+<tr class="sect"><td colspan="8">Last week, closed</td></tr>
+<tr><td>Mon Sep 14</td><td class="num">$3,140.73</td><td class="num">$0.00</td><td class="num">$755.70</td><td class="num down">not counted</td><td style="color:var(--na)">not recorded</td><td class="num down">open</td><td><span class="pill p-na">n/a</span></td></tr>
+<tr><td>Tue Sep 15</td><td class="num">$2,931.72</td><td class="num">$166.95</td><td class="num">$371.10</td><td class="num down">not counted</td><td style="color:var(--na)">not recorded</td><td class="num down">open</td><td><span class="pill p-na">n/a</span></td></tr>
+<tr><td>Wed Sep 16</td><td class="num">$2,962.91</td><td class="num">$150.00</td><td class="num">$548.12</td><td class="num">$548.00</td><td>Joseph Raven</td><td class="num up">$0.12</td><td><span class="pill p-flag">No</span></td></tr>
+<tr><td>Thu Sep 17</td><td class="num">$4,734.55</td><td class="num">$0.00</td><td class="num">$830.16</td><td class="num down">not counted</td><td style="color:var(--na)">not recorded</td><td class="num down">open</td><td><span class="pill p-na">n/a</span></td></tr>
+<tr><td>Fri Sep 18</td><td class="num">$4,898.11</td><td class="num">$200.00</td><td class="num">$1,214.31</td><td class="num">$1,215.00</td><td>Joseph Raven</td><td class="num up">$0.69</td><td><span class="pill p-flag">No</span></td></tr>
+<tr><td>Sat Sep 19</td><td class="num">$13,688.04</td><td class="num">$0.00</td><td class="num">$2,674.12</td><td class="num down">not counted</td><td style="color:var(--na)">not recorded</td><td class="num down">open</td><td><span class="pill p-na">n/a</span></td></tr>
+<tr><td>Sun Sep 20</td><td class="num">$3,838.48</td><td class="num">$0.00</td><td class="num">$673.07</td><td class="num down">not counted</td><td style="color:var(--na)">not recorded</td><td class="num down">open</td><td><span class="pill p-na">n/a</span></td></tr>
+<tr><td><b>Open, no count</b></td><td></td><td></td><td class="num down"><b>$5,304.15</b></td><td colspan="4" style="color:var(--muted)">last week, plus Monday's $544.36 until its count lands</td></tr>
+</tbody>
+</table></div>
+<p style="margin:13px 0 0;font-size:13.5px;color:var(--muted)">Expected cash is what the day's sales, tax, tips and surcharge leave in the drawer once card and delivery tenders and paid outs are taken out. A counted number entered by a named closer is the only thing that proves it. Both nights that were counted last week proved to under a dollar.</p>
+</div>
+</div>
+<div class="card">
+<h2>Duties, week of September 21</h2>
+<div class="body">
+<div class="scroll"><table id="dutytbl">
+<thead><tr><th class="dutyname">Duty or check</th><th>Mon 21</th><th>Tue 22</th><th>Wed 23</th><th>Thu 24</th><th>Fri 25</th><th>Sat 26</th><th>Sun 27</th></tr></thead>
+<tbody></tbody>
+</table></div>
+<p style="margin:12px 0 0;font-size:12.5px;color:var(--muted)">n/a means there was no line item on that day's checklist to attest, so no one was asked and no one is scored. Waiting means the late close answers are expected on the next morning's log. ok, flag and miss are scored.</p>
+</div>
+</div>
+<div class="card">
+<h2>Recurring items</h2>
+<div class="body" id="cadbody"></div>
+</div>
+<div class="card">
+<h2>Launch checklist</h2>
+<div class="body">
+<ul style="margin:0;padding-left:18px;font-size:13.5px">
+<li style="margin-bottom:6px"><b>End of day sales, tenders and reverse labor:</b> posted in full on the morning report, Monday included.</li>
+<li style="margin-bottom:6px"><b>Counted deposit by a named closer:</b> working when it is done. Two of seven nights counted last week, both proved to under a dollar.</li>
+<li style="margin-bottom:6px"><b>Manager log, nine questions:</b> two of seven nights complete last week. Monday waiting on the next morning's log.</li>
+<li style="margin-bottom:6px"><b>Paid outs recorded:</b> entertainment is going through the paid out log. Next step is a receipt number on every line and a direct answer on nights the log is empty.</li>
+<li style="margin-bottom:6px"><b>Invoice photos:</b> seven deliveries uploaded Monday after five empty days. Next step is uploading each delivery the day it arrives.</li>
+<li style="margin-bottom:6px"><b>Purchase orders raised before delivery:</b> not yet holding. Fifteen orders in a row marked placed after the goods arrived.</li>
+<li style="margin-bottom:6px"><b>Every shift on the posted schedule:</b> new this week. Monday worked 22.82 hours beyond it.</li>
+<li style="margin-bottom:6px"><b>Inventory locations on every new product:</b> 36 to confirm before Sunday's count, every keg and every wine bottle included.</li>
+<li style="margin-bottom:6px"><b>Waste sheets valued:</b> not yet started.</li>
+<li><b>Weekly count applied before the week is costed:</b> week ended 09-20 costed, food on target. Week ended 09-13 waiting on its last deliveries.</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<h2>Still open from earlier weeks</h2>
+<div class="body">
+<div class="scroll"><table>
+<thead><tr><th>Item</th><th>Raised</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>GFS romaine lettuce priced $3.00 to $23.25 and back the same day</td><td>Aug 21</td><td><span class="pill p-med">live price not confirmed</span></td></tr>
+<tr><td>Petitpren Bud Light 20 loose bottles, up 11.02%</td><td>Aug 27</td><td><span class="pill p-med">open</span></td></tr>
+<tr><td>Petitpren RB Sugar Free, up 8.97%</td><td>Aug 27</td><td><span class="pill p-med">open</span></td></tr>
+<tr><td>Forks +15.35%, foam containers +12.21%, citrus chipotle barbecue sauce +5.27%</td><td>Sep 14</td><td><span class="pill p-med">open</span></td></tr>
+<tr><td>GFS kraft food trays, 3 pound, up 88.77%</td><td>Sep 21</td><td><span class="pill p-flag">confirm pack size and price</span></td></tr>
+<tr><td>Carmela delivery of 09-16, invoice photo</td><td>Sep 16</td><td><span class="pill p-med">confirm uploaded</span></td></tr>
+<tr><td>Wednesday and Friday deposits not banked the same day</td><td>Sep 16</td><td><span class="pill p-med">bank each day on its own</span></td></tr>
+<tr><td>Products not assigned to an inventory location</td><td>Aug 24</td><td><span class="pill p-flag">36 to confirm before Sep 27 count</span></td></tr>
+<tr><td>Order value against purchase allotment</td><td>&nbsp;</td><td><span class="pill p-na">no allotment figure available to check against</span></td></tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<footer>
+Prepared by Restaurant Systems Pro for Vivio's Warren. Figures are taken from the store's own end of day, reverse labor, schedule and budget variance reports and from the daily manager log. Cash figures are rebuilt from tenders and proved to the cent.
+</footer>
+</div>
 <script>
-'use strict';
-/* ---------------- configuration ---------------- */
-const LAUNCH_DATE = new Date('2026-08-26T00:00:00');
-const WEEKLY_STALE_DAYS = 7;
-const AMBER_WITHIN_DAYS = 2;
-const OVERSHORT_LIMIT = 20;
-
-/* Roster: one lane per bookkeeper, entities as built in the manager log. */
-const ROSTER = [
- {book:'Jia', entities:[
-   {n:"Beau Jo's - Idaho Springs", pay:false},
-   {n:"Beau Jo's - Arvada", pay:false},
-   {n:"Beau Jo's - Lone Tree", pay:false},
-   {n:"Beau Jo's - Evergreen", pay:false},
-   {n:"Beau Jo's - Denver", pay:false},
-   {n:"Beau Jo's - Fort Collins", pay:false},
-   {n:"Beau Jo's - Management", pay:true, close:false},
-   {n:"Beau Jo's - Period Close", closeOnly:true, period:true},
-   {n:'Park Cafe', period:true},
-   {n:"Maxwell's - McConnelsville"},
-   {n:"Maxwell's - Zanesville"},
-   {n:'Germantown'},{n:'Karrington Rowe'},{n:'Library IV'},{n:'The Side Bar'},{n:'Hops/Scotch'},{n:'Folsom Lake Bowl'},{n:'South Pybus'},{n:'South Leavenworth'}
- ]},
- {book:'Adrianne', entities:[{n:'Beast Craft BBQ'},{n:'Little Red Inn'},{n:'Modern Barn'},{n:'The Greenwich'},{n:'Savor'},{n:"Schat's Bakery"}]},
- {book:'Eli', entities:[{n:'Owl Cafe'},{n:'Urban Hotdog'},{n:'Urban Hotdog Nob Hill'},{n:'10 Sports'},{n:'BackForty Smokehouse'},{n:'Barndoor'},{n:"Kippy's"},{n:'Noodles Kitchen'},{n:"Toledo's Cedar"},{n:"Toledo's Clovis"},{n:"Toledo's Milburn"},{n:'Bleu Duck'},{n:'SoNapa Management'},{n:'SoNapa Daytona Beach'},{n:'SoNapa Jacksonville'},{n:'SoNapa New Smyrna Beach'},{n:'SoNapa Ormond'},{n:"Wally's Pizza Pub"}]},
- {book:'Heather', entities:[{n:'River Valley Social'},{n:"Roberto's Mexican Food"},{n:'Tavern on Kruse'},{n:'Coati'},{n:'Cochino'},{n:'Ephemera'},{n:"Clancy's"},{n:'Cafe Verde'}]},
- {book:'Jan', entities:[{n:'42nd Street Cafe'},{n:'Brew Bird'},{n:'City Brew Hall'},{n:'Retro Junkie'},{n:'Firebrew'}]},
- {book:'Melinda', entities:[{n:'Atlas Group'},{n:"Brakeman's Burgers"},{n:'Ola Juice Bar Garden of the Gods'},{n:'Ola Juice Bar Kiowa'},{n:'Piglatin Cochino'}]},
- {book:'Reg', entities:[{n:'Gimani'},{n:'Tulipani Pasta'},{n:'Tulipani Park Square'},{n:'Off the Rails BBQ'},{n:'Gather'},{n:'Sur Lie'},{n:'Beadling Club'},{n:"Frisch's"},{n:"Nobby's Pizza"},{n:'EPN 1'},{n:'EPN 2'},{n:'EPN 3'},{n:'EPN 4'},{n:'EPN 5'},{n:'EPN 6'},{n:'EPN 7'},{n:'EPN 8'}]},
- {book:'Rey', entities:[{n:'Grits Grill'},{n:'The Dunes'},{n:"Paulie's Pub"},{n:"Paulie's Field Trip"},{n:'Crave Protein'},{n:"Domik's Pizza"},{n:'The Search Bar'},{n:'Wharf 850'},{n:"Mom's Pizza and Pasta"},{n:'Granville'},{n:'Maryland Fried Chicken'}]}
+var WEEK = {
+labels: ["Mon 09-21","Tue 09-22","Wed 09-23","Thu 09-24","Fri 09-25","Sat 09-26","Sun 09-27"],
+actual: [2744.28, null, null, null, null, null, null],
+plan:   [4708.19, 2163.14, 2765.54, 3851.78, 5580.33, 3161.67, 4407.11],
+recent: [2746.18, 2975.27, 3420.28, 3809.11, 5605.61, 5025.58, 3847.98],
+lastYr: [5885.24, 2703.92, 3456.92, 4814.72, 6975.41, 3952.09, 5508.89],
+hrs:    [60.82, 43.00, 48.50, 40.50, 54.00, 39.48, 53.50],
+sched:  [38.00, 43.00, 48.50, 40.50, 54.00, 39.48, 53.50],
+pay:    [808.98, 792.46, 895.46, 735.46, 985.46, 780.50, 934.90]
+};
+var TARGET = 0.2105;
+var CALL = ["worked", "cut first, today", "cut second", "leave", "leave", "keep staffed", "watch"];
+function money(v){
+if(v===null||v===undefined) return "not yet";
+var s=Math.abs(v).toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2});
+return (v<0?"-$":"$")+s;
+}
+function pct(a,b){
+if(a===null||b===null||!b) return '<span style="color:var(--na)">not yet</span>';
+var p=((a-b)/b)*100, cls=p>=0?"up":"down";
+return '<span class="'+cls+'">'+(p>=0?"+":"")+p.toFixed(2)+'%</span>';
+}
+(function(){
+var tb=document.querySelector("#weektbl tbody"), rows="";
+for(var i=0;i<7;i++){
+var a=WEEK.actual[i], pend=(a===null)?' style="color:var(--na)"':'';
+rows+="<tr"+pend+"><td>"+WEEK.labels[i]+"</td>"
++'<td class="num">'+money(a)+'</td><td class="num">'+money(WEEK.plan[i])+'</td><td class="num">'+money(WEEK.recent[i])
++'</td><td class="num">'+pct(a,WEEK.recent[i])+'</td><td class="num">'+money(WEEK.lastYr[i])+"</td></tr>";
+}
+tb.innerHTML=rows;
+})();
+(function(){
+var tb=document.querySelector("#labortbl tbody"), rows="";
+for(var i=0;i<7;i++){
+var worked=WEEK.actual[i]!==null, base=worked?WEEK.actual[i]:WEEK.plan[i];
+var allow=base*TARGET, o=WEEK.pay[i]-allow;
+var lc=worked?(WEEK.pay[i]/WEEK.actual[i]*100).toFixed(2)+"%":'<span style="color:var(--na)">scheduled</span>';
+rows+="<tr><td>"+WEEK.labels[i]+"</td>"
++'<td class="num">'+WEEK.hrs[i].toFixed(2)+'</td><td class="num">'+WEEK.sched[i].toFixed(2)+'</td><td class="num">'+money(WEEK.pay[i])
++'</td><td class="num">'+lc+'</td><td class="num">'+money(allow)+'</td><td class="num '+(o>0?"down":"up")+'">'+(o>0?"+":"")+money(o)+"</td></tr>";
+}
+tb.innerHTML=rows;
+})();
+(function(){
+var tb=document.querySelector("#fwdtbl tbody"), rows="", tp=0, ta=0;
+for(var i=1;i<7;i++){
+var allow=WEEK.plan[i]*TARGET, o=WEEK.pay[i]-allow; tp+=WEEK.pay[i]; ta+=allow;
+var pill=(i===1||i===2)?"p-flag":(i===6?"p-med":"p-ok");
+rows+="<tr><td>"+WEEK.labels[i]+'</td><td class="num">'+WEEK.sched[i].toFixed(2)+'</td><td class="num">'+money(WEEK.pay[i])+'</td><td class="num">'+money(WEEK.plan[i])
++'</td><td class="num">'+money(allow)+'</td><td class="num '+(o>0?"down":"up")+'">'+(o>0?"+":"")+money(o)+'</td><td class="num">'+money(WEEK.recent[i])
++'</td><td><span class="pill '+pill+'">'+CALL[i]+"</span></td></tr>";
+}
+rows+='<tr><td><b>Rest of week</b></td><td></td><td class="num"><b>'+money(tp)+'</b></td><td></td><td class="num"><b>'+money(ta)+'</b></td><td class="num down"><b>+'+money(tp-ta)+'</b></td><td></td><td></td></tr>';
+tb.innerHTML=rows;
+})();
+(function(){
+var S=function(k,t){ var m={ok:["p-ok","ok"],flag:["p-flag","flag"],miss:["p-flag","miss"],na:["p-na","n/a"],wait:["p-med","waiting"]}; if(!k) return ""; return '<span class="pill '+m[k][0]+'">'+m[k][1]+'</span>'+(t?' <small style="color:var(--muted)">'+t+'</small>':''); };
+function r(k,t){ return [[k,t],[""],[""],[""],[""],[""],[""]]; }
+var D=[
+["Verified from data",null],
+["Sales posted",r("ok","$2,744.28")],
+["Invoices uploaded",r("ok","7 deliveries")],
+["Orders placed before delivery",r("flag","7 after")],
+["Price increases over 5%",r("flag","trays +88.77%")],
+["Cash proved by a counted deposit",r("wait","$544.36")],
+["Labor against the necessary bar",r("flag","29.48%")],
+["Hours within the posted schedule",r("flag","+22.82 hrs")],
+["Paid outs logged with receipts",r("flag","empty, 3rd day")],
+["New products given an inventory location",r("flag","8 new")],
+["Manager log, nine questions",null],
+["Opening and closing manager",r("wait")],
+["Anything unusual affecting sales",r("wait")],
+["Counted cash deposit and who counted it",r("wait")],
+["Deposit banked today by itself",r("wait")],
+["86s and what is on tomorrow's order",r("wait")],
+["Equipment, repair or safety",r("wait")],
+["Complaints, refunds or comps",r("wait")],
+["Callouts, no shows, employee issues",r("wait")],
+["Anything else the owner should know",r("wait")],
+["Day specific duties",null],
+["Monday: usage report, ideal cost, waste values",r("na")],
+["Tuesday: budget variance analyzed",[[""],[""],[""],[""],[""],[""],[""]]],
+["Wednesday: training plan and manager meeting",[[""],[""],[""],[""],[""],[""],[""]]],
+["Thursday: dollars per labor hour, schedule variance, approve schedules",[[""],[""],[""],[""],[""],[""],[""]]],
+["Daily duties",null],
+["Paid outs, allotment, purchase orders, recipe cards, checklists, prep sheets, preshift, unpaid invoice audit, key item report",r("na")]
 ];
-
-/* Cells map to question-name fragments; first match in the answers wins. */
-const CELLS = [
- {key:'EOD',  label:'EOD',   kind:'check', frags:['EOD reports reviewed']},
- {key:'OS',   label:'O/S $', kind:'money', frags:['Largest single-day over/short','over/short']},
- {key:'DEP',  label:'DEP',   kind:'check', frags:['Cash deposits reconciled']},
- {key:'RECON',label:'RECON', kind:'date',  frags:['All accounts reconciled through','Checking account reconciled through','Operating account','reconciled through']},
- {key:'BAL',  label:'BAL',   kind:'check', frags:['Balance sheet in balance']},
- {key:'PAY',  label:'PAY',   kind:'date',  frags:['Payroll entered through','Payroll (all 7 entities)','PAYROLL']},
- {key:'CLOSE',label:'CLOSE', kind:'close', frags:['close:','Period close','Month close']}
+var b="";
+for(var i=0;i<D.length;i++){
+if(D[i][1]===null){ b+='<tr class="sect"><td colspan="8">'+D[i][0]+'</td></tr>'; continue; }
+b+='<tr><td class="dutyname">'+D[i][0]+'</td>';
+for(var j=0;j<7;j++){ var c=D[i][1][j]; b+='<td>'+S(c[0],c[1])+'</td>'; }
+b+='</tr>';
+}
+document.querySelector("#dutytbl tbody").innerHTML=b;
+})();
+(function(){
+var C=[
+{n:"Automatic par levels",f:"every 42 days",cur:33,cyc:42,label:"33 of 42, due Sep 30",col:"var(--med)",cls:"warn"},
+{n:"Equipment inspection",f:"every 31 days",cur:0,cyc:31,label:"cycle closed Sep 19, not on the checklist",col:"var(--na)",cls:"",na:true},
+{n:"Restaurant walkthrough",f:"every 14 days",cur:0,cyc:14,label:"not on the checklist",col:"var(--na)",cls:"",na:true},
+{n:"Employee availabilities",f:"every 31 days",cur:0,cyc:31,label:"not yet tracked here",col:"var(--na)",cls:"",na:true}
 ];
-
-let ANSWERS = {"Folsom Lake Bowl-EOD reports reviewed for the full week": {"value": true, "answeredAt": "2026-08-26T17:00:00Z"}, "Folsom Lake Bowl-All accounts reconciled through date": {"value": "2026-07-31", "answeredAt": "2026-08-28T17:00:00Z"}, "Folsom Lake Bowl-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-08-28T17:00:00Z"}, "Folsom Lake Bowl-Exceptions or blockers": {"value": "BLOCKED: owner unresponsive on statement access; Checking 7301 and Citi 0869/8055/1753 August all waiting (Cy)", "answeredAt": "2026-09-01T17:00:00Z"}, "Karrington Rowe-All accounts reconciled through date": {"value": "2026-08-25", "answeredAt": "2026-08-26T17:00:00Z"}, "Germantown-All accounts reconciled through date": {"value": "2026-08-25", "answeredAt": "2026-08-26T17:00:00Z"}, "Park Cafe-All accounts reconciled through date": {"value": "2026-08-25", "answeredAt": "2026-08-26T17:00:00Z"}, "Urban Hotdog-Cash deposits reconciled, after EOD review": {"value": true, "answeredAt": "2026-08-26T17:00:00Z"}, "Urban Hotdog Nob Hill-Cash deposits reconciled, after EOD review": {"value": true, "answeredAt": "2026-08-26T17:00:00Z"}, "42nd Street Cafe-Exceptions or blockers": {"value": "CC Citi 0671 August statement completed; recon folders created (Jan). 2025 backlog ongoing", "answeredAt": "2026-08-29T17:00:00Z"}, "Beast Craft BBQ-Exceptions or blockers": {"value": "4301 statement deposits completed (Adrianne)", "answeredAt": "2026-08-27T17:00:00Z"}, "The Search Bar-Exceptions or blockers": {"value": "Concerns being followed up (Reynalyn)", "answeredAt": "2026-08-26T17:00:00Z"}, "Beau Jo's - Idaho Springs-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-08-28T17:00:00Z"}, "Beau Jo's - Arvada-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-08-28T17:00:00Z"}, "Beau Jo's - Lone Tree-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-08-28T17:00:00Z"}, "Beau Jo's - Evergreen-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-08-28T17:00:00Z"}, "Beau Jo's - Denver-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-08-28T17:00:00Z"}, "Beau Jo's - Fort Collins-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-08-28T17:00:00Z"}, "Beau Jo's - Management-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-08-28T17:00:00Z"}, "Beau Jo's - Period Close-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-08-28T17:00:00Z"}, "Park Cafe-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-08-28T17:00:00Z"}, "Maxwell's - McConnelsville-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-08-28T17:00:00Z"}, "Maxwell's - Zanesville-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-08-28T17:00:00Z"}, "Germantown-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-08-28T17:00:00Z"}, "Karrington Rowe-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-08-28T17:00:00Z"}, "Library IV-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-08-28T17:00:00Z"}, "The Side Bar-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-08-28T17:00:00Z"}, "Hops/Scotch-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-08-28T17:00:00Z"}, "River Valley Social-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-08-28T17:00:00Z"}, "Roberto's Mexican Food-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-08-28T17:00:00Z"}, "Tavern on Kruse-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-08-28T17:00:00Z"}, "Coati-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-08-28T17:00:00Z"}, "Cochino-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-08-28T17:00:00Z"}, "Ephemera-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-08-28T17:00:00Z"}, "Clancy's-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-08-28T17:00:00Z"}, "Cafe Verde-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-08-28T17:00:00Z"}, "Owl Cafe-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-08-28T17:00:00Z"}, "Urban Hotdog-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-08-28T17:00:00Z"}, "Urban Hotdog Nob Hill-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-08-28T17:00:00Z"}, "10 Sports-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-08-28T17:00:00Z"}, "BackForty Smokehouse-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-08-28T17:00:00Z"}, "Barndoor-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-08-28T17:00:00Z"}, "Kippy's-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-08-28T17:00:00Z"}, "Noodles Kitchen-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-08-28T17:00:00Z"}, "Toledo's Cedar-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-08-28T17:00:00Z"}, "Toledo's Clovis-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-08-28T17:00:00Z"}, "Toledo's Milburn-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-08-28T17:00:00Z"}, "Bleu Duck-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-08-28T17:00:00Z"}, "SoNapa-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-08-28T17:00:00Z"}, "Wally's Pizza Pub-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-08-28T17:00:00Z"}, "Beast Craft BBQ-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-08-28T17:00:00Z"}, "Little Red Inn-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-08-28T17:00:00Z"}, "Modern Barn-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-08-28T17:00:00Z"}, "The Greenwich-Largest single-day over/short this week in dollars": {"value": 22, "answeredAt": "2026-08-28T17:00:00Z"}, "Savor-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-08-28T17:00:00Z"}, "Schat's Bakery-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-08-28T17:00:00Z"}, "42nd Street Cafe-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-08-28T17:00:00Z"}, "Brew Bird-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-08-28T17:00:00Z"}, "City Brew Hall-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-08-28T17:00:00Z"}, "Retro Junkie-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-08-28T17:00:00Z"}, "Firebrew-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-08-28T17:00:00Z"}, "Atlas Group-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-08-28T17:00:00Z"}, "Brakeman's Burgers-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-08-28T17:00:00Z"}, "Ola Juice Bar Garden of the Gods-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-08-28T17:00:00Z"}, "Ola Juice Bar Kiowa-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-08-28T17:00:00Z"}, "Piglatin Cochino-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-08-28T17:00:00Z"}, "Gimani-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-08-28T17:00:00Z"}, "Tulipani Pasta-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-08-28T17:00:00Z"}, "Tulipani Park Square-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-08-28T17:00:00Z"}, "Off the Rails BBQ-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-08-28T17:00:00Z"}, "Gather-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-08-28T17:00:00Z"}, "Sur Lie-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-08-28T17:00:00Z"}, "Beadling Club-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-08-28T17:00:00Z"}, "Frisch's-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-08-28T17:00:00Z"}, "Nobby's Pizza-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-08-28T17:00:00Z"}, "EPN 1-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-08-28T17:00:00Z"}, "EPN 2-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-08-28T17:00:00Z"}, "EPN 3-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-08-28T17:00:00Z"}, "EPN 4-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-08-28T17:00:00Z"}, "EPN 5-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-08-28T17:00:00Z"}, "EPN 6-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-08-28T17:00:00Z"}, "EPN 7-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-08-28T17:00:00Z"}, "EPN 8-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-08-28T17:00:00Z"}, "Grits Grill-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-08-28T17:00:00Z"}, "The Dunes-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-08-28T17:00:00Z"}, "Paulie's Pub-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-08-28T17:00:00Z"}, "Paulie's Field Trip-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-08-28T17:00:00Z"}, "Crave Protein-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-08-28T17:00:00Z"}, "Domik's Pizza-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-08-28T17:00:00Z"}, "The Search Bar-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-08-28T17:00:00Z"}, "Wharf 850-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-08-28T17:00:00Z"}, "Mom's Pizza and Pasta-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-08-28T17:00:00Z"}, "Granville-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-08-28T17:00:00Z"}, "The Greenwich-EOD reports reviewed for the full week": {"value": true, "answeredAt": "2026-08-28T17:00:00Z"}, "The Greenwich-Cash deposits reconciled, after EOD review": {"value": "2026-07-24", "answeredAt": "2026-08-28T17:00:00Z"}, "The Greenwich-Balance sheet in balance": {"value": "2026-04-05", "answeredAt": "2026-08-29T17:00:00Z"}, "The Greenwich-Payroll entered through pay period ending": {"value": "2026-08-09", "answeredAt": "2026-08-28T17:00:00Z"}, "The Greenwich-Exceptions or blockers": {"value": "4607 statement completed (Adrianne)", "answeredAt": "2026-08-27T17:00:00Z"}, "Noodles Kitchen-Exceptions or blockers": {"value": "One statement finished (Marnelle)", "answeredAt": "2026-08-28T17:00:00Z"}, "Little Red Inn-All accounts reconciled through date": {"value": "2026-08-31", "answeredAt": "2026-09-01T17:00:00Z"}, "Little Red Inn-Exceptions or blockers": {"value": "August statements 9777 and 8386 completed (Adrianne)", "answeredAt": "2026-08-29T17:00:00Z"}, "42nd Street Cafe-All accounts reconciled through date": {"value": "2026-08-31", "answeredAt": "2026-09-01T17:00:00Z"}, "Firebrew-Exceptions or blockers": {"value": "Recon folders created (Jan)", "answeredAt": "2026-08-29T17:00:00Z"}, "Retro Junkie-Exceptions or blockers": {"value": "Truist 6018 activity confirm via Sara; WF LOC 9277 Aug statement requested from client (Jan)", "answeredAt": "2026-09-01T17:00:00Z"}, "Schat's Bakery-Exceptions or blockers": {"value": "Cheyenne's P&L and category concern being worked (Adrianne)", "answeredAt": "2026-08-27T17:00:00Z"}, "Beau Jo's - Idaho Springs-All accounts reconciled through date": {"value": "2026-08-28", "answeredAt": "2026-09-01T17:00:00Z"}, "Beau Jo's - Arvada-All accounts reconciled through date": {"value": "2026-08-28", "answeredAt": "2026-09-01T17:00:00Z"}, "Beau Jo's - Lone Tree-All accounts reconciled through date": {"value": "2026-08-28", "answeredAt": "2026-09-01T17:00:00Z"}, "Beau Jo's - Evergreen-All accounts reconciled through date": {"value": "2026-08-28", "answeredAt": "2026-09-01T17:00:00Z"}, "Beau Jo's - Denver-All accounts reconciled through date": {"value": "2026-08-28", "answeredAt": "2026-09-01T17:00:00Z"}, "Beau Jo's - Fort Collins-All accounts reconciled through date": {"value": "2026-08-28", "answeredAt": "2026-09-01T17:00:00Z"}, "Beau Jo's - Management-All accounts reconciled through date": {"value": "2026-08-28", "answeredAt": "2026-09-01T17:00:00Z"}, "Library IV-All accounts reconciled through date": {"value": "2026-08-28", "answeredAt": "2026-08-28T17:00:00Z"}, "Library IV-Payroll entered through pay period ending": {"value": "2026-08-28", "answeredAt": "2026-09-01T17:00:00Z"}, "Cafe Verde-All accounts reconciled through date": {"value": "2026-08-28", "answeredAt": "2026-09-01T17:00:00Z"}, "Nobby's Pizza-All accounts reconciled through date": {"value": "2026-08-31", "answeredAt": "2026-09-01T17:00:00Z"}, "Paulie's Field Trip-All accounts reconciled through date": {"value": "2026-08-26", "answeredAt": "2026-09-01T17:00:00Z"}, "Maxwell's - McConnelsville-Payroll entered through pay period ending": {"value": "2026-08-27", "answeredAt": "2026-08-27T17:00:00Z"}, "Wally's Pizza Pub-Exceptions or blockers": {"value": "July statements completed, August in review (Cy)", "answeredAt": "2026-08-28T17:00:00Z"}, "Maxwell's - McConnelsville-Exceptions or blockers": {"value": "July statements completed, August in review (Cy)", "answeredAt": "2026-08-28T17:00:00Z"}, "Paulie's Pub-Exceptions or blockers": {"value": "Accts 1409 and 7039 completed (Reynalyn)", "answeredAt": "2026-08-27T17:00:00Z"}, "Mom's Pizza and Pasta-Exceptions or blockers": {"value": "Chase 2650 Aug complete; WF 4809 withdrawals in progress (Reynalyn)", "answeredAt": "2026-09-01T17:00:00Z"}, "Savor-Exceptions or blockers": {"value": "Operating 2346 Aug in progress (Adrianne)", "answeredAt": "2026-09-01T17:00:00Z"}, "Barndoor-Cash deposits reconciled, after EOD review": {"value": true, "answeredAt": "2026-09-01T17:00:00Z"}, "Barndoor-Exceptions or blockers": {"value": "Stmt 1778 deposits done, payments in progress; needs statement access for check payees (Anna)", "answeredAt": "2026-09-01T17:00:00Z"}, "10 Sports-Exceptions or blockers": {"value": "Stmt 191043 deposits and payments in progress; needs statement access for payees (Marnelle)", "answeredAt": "2026-09-01T17:00:00Z"}, "Gimani-Exceptions or blockers": {"value": "Amex 11002 Aug in progress (Regiene)", "answeredAt": "2026-09-01T17:00:00Z"}, "Beadling Club-Exceptions or blockers": {"value": "Amex 9627 Aug near complete, awaiting month-end stmt; payroll through #36 (Regiene)", "answeredAt": "2026-09-01T17:00:00Z"}, "Sur Lie-Exceptions or blockers": {"value": "Acct 22001 completed (Regiene)", "answeredAt": "2026-08-27T17:00:00Z"}, "Frisch's-Exceptions or blockers": {"value": "Product entry done; 58 invoices entered team-wide (Marnelle)", "answeredAt": "2026-08-27T17:00:00Z"}, "Tavern on Kruse-Exceptions or blockers": {"value": "August transactions downloaded (Heather)", "answeredAt": "2026-08-27T17:00:00Z"}, "South Pybus-Exceptions or blockers": {"value": "New: vendors added per Tess; CVB 0937 transactions downloaded to 8/28 (Heather)", "answeredAt": "2026-09-01T17:00:00Z"}, "South Leavenworth-Exceptions or blockers": {"value": "New: vendors added per Tess (Heather)", "answeredAt": "2026-09-01T17:00:00Z"}, "Maryland Fried Chicken-Largest single-day over/short this week in dollars": {"value": 0, "answeredAt": "2026-08-28T17:00:00Z"}, "Roberto's Mexican Food-All accounts reconciled through date": {"value": "2026-08-27", "answeredAt": "2026-08-27T17:00:00Z"}, "Roberto's Mexican Food-Exceptions or blockers": {"value": "Account 0276 complete (Heather)", "answeredAt": "2026-08-27T17:00:00Z"}, "River Valley Social-Exceptions or blockers": {"value": "August transactions downloaded (Heather)", "answeredAt": "2026-08-27T17:00:00Z"}, "Tulipani Pasta-All accounts reconciled through date": {"value": "2026-08-27", "answeredAt": "2026-08-27T17:00:00Z"}, "Tulipani Pasta-Exceptions or blockers": {"value": "Acct 1646 completed (Regiene)", "answeredAt": "2026-08-27T17:00:00Z"}, "Sur Lie-All accounts reconciled through date": {"value": "2026-08-27", "answeredAt": "2026-08-27T17:00:00Z"}, "Gather-All accounts reconciled through date": {"value": "2026-08-27", "answeredAt": "2026-08-27T17:00:00Z"}, "Gather-Exceptions or blockers": {"value": "Acct 71004 completed (Regiene)", "answeredAt": "2026-08-27T17:00:00Z"}, "Wally's Pizza Pub-Payroll entered through pay period ending": {"value": "2026-08-27", "answeredAt": "2026-08-27T17:00:00Z"}, "Maxwell's - McConnelsville-EOD reports reviewed for the full week": {"value": true, "answeredAt": "2026-08-27T17:00:00Z"}, "Crave Protein-Payroll entered through pay period ending": {"value": "2026-08-27", "answeredAt": "2026-08-27T17:00:00Z"}, "Paulie's Pub-All accounts reconciled through date": {"value": "2026-08-27", "answeredAt": "2026-08-27T17:00:00Z"}, "Beast Craft BBQ-Cash deposits reconciled, after EOD review": {"value": true, "answeredAt": "2026-08-27T17:00:00Z"}, "The Greenwich-All accounts reconciled through date": {"value": "2026-08-27", "answeredAt": "2026-08-27T17:00:00Z"}, "Library IV-Exceptions or blockers": {"value": "Transactions reconciled (Jia)", "answeredAt": "2026-08-28T17:00:00Z"}, "Maryland Fried Chicken-All accounts reconciled through date": {"value": "2026-08-28", "answeredAt": "2026-08-28T17:00:00Z"}, "Maryland Fried Chicken-Exceptions or blockers": {"value": "Acct 7532 completed; August invoices in progress (Reynalyn)", "answeredAt": "2026-08-28T17:00:00Z"}, "Wally's Pizza Pub-All accounts reconciled through date": {"value": "2026-07-31", "answeredAt": "2026-08-28T17:00:00Z"}, "Maxwell's - McConnelsville-All accounts reconciled through date": {"value": "2026-07-31", "answeredAt": "2026-08-28T17:00:00Z"}};       /* key: "<Entity>-<Question>" -> {value, answeredAt} */
-let GENERATED = '2026-09-02T19:12:32.809134+00:00';
-let DEMO = false;
-
-/* ---------------- scoring ---------------- */
-const now = () => new Date();
-const days = ms => ms/86400000;
-function ageDays(d){ return days(now() - d); }
-
-function findAnswer(entity, frags){
-  const pfx = entity + '-';
-  let best = null;
-  for (const [k,v] of Object.entries(ANSWERS)){
-    if (!k.startsWith(pfx)) continue;
-    const q = k.slice(pfx.length);
-    if (frags.some(f => q.toLowerCase().includes(f.toLowerCase()))){
-      if (!best || new Date(v.answeredAt) > new Date(best.answeredAt)) best = Object.assign({q}, v);
-    }
-  }
-  return best;
+var b="";
+for(var i=0;i<C.length;i++){ var c=C[i], w=c.na?0:Math.min(100,c.cur/c.cyc*100);
+b+='<div class="meter"'+(i===C.length-1?' style="margin-bottom:0"':'')+'><div class="mh"><span><b>'+c.n+'</b> &middot; '+c.f+'</span><span class="'+c.cls+'"'+(c.na?' style="color:var(--na)"':'')+'>'+c.label+'</span></div><div class="bar"><i style="width:'+w.toFixed(0)+'%;background:'+c.col+'"></i></div></div>';
 }
-
-function graceState(){
-  /* never answered: gray during grace, red after cadence passes from launch */
-  const sinceLaunch = ageDays(LAUNCH_DATE);
-  if (sinceLaunch > WEEKLY_STALE_DAYS) return {s:'red', v:'silent', tip:'never answered, past cadence'};
-  if (sinceLaunch > WEEKLY_STALE_DAYS - AMBER_WITHIN_DAYS) return {s:'amber', v:'due', tip:'never answered, cadence closing'};
-  return {s:'gray', v:'\u2014', tip:'no answer yet, in grace'};
-}
-
-function scoreCell(entity, cell, ent){
-  if (cell.key==='PAY' && ent.pay===false) return {s:'na', v:'n/a', tip:'payroll handled at Management level'};
-  if (ent.closeOnly && cell.key!=='CLOSE') return {s:'na', v:'n/a', tip:'close-tracking row'};
-  if (cell.key==='CLOSE' && ent.close===false) return {s:'na', v:'n/a', tip:'tracked on Period Close row'};
-
-  const a = findAnswer(entity, cell.frags);
-  if (!a) return {s:'gray', v:'\u2014', tip:'never reported', nr:true};
-
-  const answeredAge = ageDays(new Date(a.answeredAt));
-  const staleTag = answeredAge > WEEKLY_STALE_DAYS;
-
-  const isDateStr = v => typeof v === 'string' && /^\d{4}-\d{2}-\d{2}/.test(v); const prevMonthEnd = () => { const n = now(); return new Date(n.getFullYear(), n.getMonth(), 0); }; if (cell.kind==='check' && isDateStr(a.value)){ const d = new Date(a.value + 'T12:00:00'); const label = (d.getMonth()+1)+'/'+d.getDate(); if (cell.key === 'BAL'){ if (d < prevMonthEnd()) return {s:'red', v:label, tip:'balanced only through '+label}; return {s:'green', v:label, tip:a.q}; } const throughAge = ageDays(d); if (throughAge > WEEKLY_STALE_DAYS + 2) return {s:'red', v:label, tip:'through-date '+Math.floor(throughAge)+'d old'}; if (throughAge > WEEKLY_STALE_DAYS) return {s:'amber', v:label, tip:'through-date aging'}; return {s:'green', v:label, tip:a.q}; } if (cell.kind==='close' && isDateStr(a.value)){ const d = new Date(a.value + 'T12:00:00'); const label = 'thru '+(d.getMonth()+1)+'/'+d.getDate(); const n = now(); const priorEnd = new Date(n.getFullYear(), n.getMonth(), 0); const twoBackEnd = new Date(n.getFullYear(), n.getMonth()-1, 0); if (d >= priorEnd) return {s:'green', v:label, tip:a.q}; if (d >= twoBackEnd && n.getDate() <= 8) return {s:'amber', v:label, tip:'prior month close in window'}; return {s:'red', v:label, tip:'closed only '+label}; } if (cell.kind==='check'){
-    const yes = a.value===true || String(a.value).toLowerCase()==='yes' || String(a.value).toLowerCase()==='true' || a.value===1;
-    if (!yes) return {s:'red', v:'no', tip:a.q};
-    if (staleTag) return {s:'red', v:Math.floor(answeredAge)+'d stale', tip:'last yes too old'};
-    if (answeredAge > WEEKLY_STALE_DAYS - AMBER_WITHIN_DAYS) return {s:'amber', v:Math.floor(answeredAge)+'d', tip:'cadence closing'};
-    return {s:'green', v:'yes', tip:a.q};
-  }
-  if (cell.kind==='money'){
-    const num = parseFloat(String(a.value).replace(/[^0-9.\-]/g,''));
-    if (isNaN(num)) return {s:'amber', v:String(a.value).slice(0,6), tip:'non-numeric answer'};
-    if (Math.abs(num) > OVERSHORT_LIMIT) return {s:'red', v:'$'+num, tip:'over/short above $'+OVERSHORT_LIMIT};
-    if (staleTag) return {s:'red', v:Math.floor(answeredAge)+'d stale', tip:'answer too old'};
-    return {s:'green', v:'$'+num, tip:a.q};
-  }
-  if (cell.kind==='date'){
-    const d = new Date(/^\d{4}-\d{2}-\d{2}$/.test(a.value) ? a.value + 'T12:00:00' : a.value);
-    if (isNaN(d)) return {s:'amber', v:String(a.value).slice(0,8), tip:'unparseable date'};
-    const throughAge = ageDays(d);
-    const label = (d.getMonth()+1)+'/'+d.getDate();
-    if (throughAge > WEEKLY_STALE_DAYS + 2) return {s:'red', v:label, tip:'through-date '+Math.floor(throughAge)+'d old'};
-    if (throughAge > WEEKLY_STALE_DAYS) return {s:'amber', v:label, tip:'through-date aging'};
-    return {s:'green', v:label, tip:a.q};
-  }
-  if (cell.kind==='close'){
-    /* red if any close-family answer is no; stale after the 8th for prior month if unanswered this month */
-    const yes = a.value===true || String(a.value).toLowerCase()==='yes' || String(a.value).toLowerCase()==='true';
-    const answeredThisMonth = new Date(a.answeredAt).getMonth()===now().getMonth() && new Date(a.answeredAt).getFullYear()===now().getFullYear();
-    if (!yes) return {s:'red', v:'no', tip:a.q};
-    if (!answeredThisMonth && now().getDate() > 8) return {s:'red', v:'stale', tip:'close not confirmed this month'};
-    if (!answeredThisMonth && now().getDate() > 5) return {s:'amber', v:'due', tip:'close window open'};
-    return {s:'green', v:'done', tip:a.q};
-  }
-  return {s:'gray', v:'\u2014', tip:''};
-}
-
-const RANK = {red:3, amber:2, gray:1, green:0, na:-1};
-function scoreEntity(ent){
-  const cells = CELLS.map(c => Object.assign({def:c}, scoreCell(ent.n, c, ent)));
-  const reported = cells.filter(c => !c.nr && c.s !== 'na' && c.s !== 'gray');
-  const worst = reported.reduce((w,c)=> RANK[c.s]>RANK[w]? c.s : w, 'na');
-  const nrCount = cells.filter(c => c.nr).length;
-  return {cells, nrCount, worst: worst==='na' ? 'gray' : worst};
-}
-
-/* ---------------- render ---------------- */
-function render(){
-  const board = document.getElementById('board');
-  board.innerHTML = '';
-  const totals = {red:0, amber:0, green:0, gray:0};
-
-  for (const lane of ROSTER){
-    const scored = lane.entities.map(e => Object.assign({ent:e}, scoreEntity(e)));
-    scored.sort((a,b)=> RANK[b.worst]-RANK[a.worst] || a.ent.n.localeCompare(b.ent.n));
-    const laneReds = scored.filter(s=>s.worst==='red').length;
-    scored.forEach(s=>{ totals[s.worst] = (totals[s.worst]||0)+1; });
-
-    const laneEl = document.createElement('section');
-    laneEl.className = 'lane';
-    laneEl.innerHTML =
-      '<div class="lane-head"><h2>'+esc(lane.book)+'</h2>'+
-      '<span class="count">'+scored.length+' entities</span>'+
-      '<span class="redflag">'+(laneReds? laneReds+' red' : 'clear')+'</span></div>';
-    const body = document.createElement('div');
-    body.className = 'lane-body';
-
-    for (const s of scored){
-      const chip = document.createElement('button');
-      chip.className = 'chip '+s.worst;
-      chip.setAttribute('aria-label', s.ent.n+', status '+s.worst);
-      const newest = s.cells.filter(c=>c.def).map(c=>c).length;
-      chip.innerHTML =
-        '<span class="name">'+esc(s.ent.n)+'<span class="age">'+s.worst.toUpperCase()+(s.nrCount? ' \u00b7 '+s.nrCount+' n/r':'')+'</span></span>'+
-        '<span class="cells">'+ s.cells.map(c=>
-          '<span class="cell '+c.s+'" title="'+esc(c.tip||'')+'"><span class="t">'+c.def.label+'</span><span class="v">'+esc(String(c.v))+'</span></span>'
-        ).join('') + '</span>';
-      chip.addEventListener('click', ()=>openDrawer(s.ent.n));
-      body.appendChild(chip);
-    }
-    laneEl.appendChild(body);
-    board.appendChild(laneEl);
-  }
-
-  document.getElementById('sRed').textContent = totals.red||0;
-  document.getElementById('sAmber').textContent = totals.amber||0;
-  document.getElementById('sGreen').textContent = totals.green||0;
-  document.getElementById('sGray').textContent = totals.gray||0;
-  document.getElementById('asof').textContent = 'as of '+ (GENERATED ? new Date(GENERATED).toLocaleString() : now().toLocaleString()) + (DEMO? ' · DEMO DATA' : '');
-  document.getElementById('banner').style.display = Object.keys(ANSWERS).length ? 'none' : 'block';
-}
-
-function openDrawer(entity){
-  const pfx = entity + '-';
-  const rows = Object.entries(ANSWERS)
-    .filter(([k])=>k.startsWith(pfx))
-    .map(([k,v])=>({q:k.slice(pfx.length), v}));
-  const el = document.getElementById('dBody');
-  document.getElementById('dTitle').textContent = entity;
-  if (!rows.length){
-    el.innerHTML = '<p style="color:var(--muted);padding:14px 4px">No answers recorded for this entity yet. This drawer fills in the moment the first manager log entry lands.</p>';
-  } else {
-    rows.sort((a,b)=> a.q.localeCompare(b.q));
-    el.innerHTML = rows.map(r=>{
-      const val = r.v.value;
-      const isNo = val===false || String(val).toLowerCase()==='no' || String(val).toLowerCase()==='false';
-      const pill = isNo? 'red' : 'green';
-      return '<div class="qrow"><span class="q">'+esc(r.q)+'</span>'+
-        '<span class="a"><span class="pill '+pill+'">'+esc(String(val))+'</span></span>'+
-        '<span class="meta">answered '+new Date(r.v.answeredAt).toLocaleString()+'</span></div>';
-    }).join('');
-  }
-  document.getElementById('overlay').classList.add('open');
-  document.getElementById('drawer').classList.add('open');
-}
-function closeDrawer(){
-  document.getElementById('overlay').classList.remove('open');
-  document.getElementById('drawer').classList.remove('open');
-}
-document.getElementById('dClose').addEventListener('click', closeDrawer);
-document.getElementById('overlay').addEventListener('click', closeDrawer);
-document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeDrawer(); });
-
-function esc(s){ return String(s).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
-
-/* ---------------- data in ---------------- */
-document.getElementById('fileIn').addEventListener('change', ev=>{
-  const f = ev.target.files[0]; if (!f) return;
-  const rd = new FileReader();
-  rd.onload = ()=>{
-    try{
-      const j = JSON.parse(rd.result);
-      ANSWERS = j.answers || {};
-      GENERATED = j.generatedAt || null;
-      DEMO = false;
-      render();
-    }catch(e){ alert('That file is not valid answers JSON. Expected {"generatedAt":..., "answers":{...}}'); }
-  };
-  rd.readAsText(f);
-});
-
-/* ---------------- demo data ---------------- */
-document.getElementById('demoBtn').addEventListener('click', ()=>{
-  if (DEMO){ ANSWERS={}; GENERATED=null; DEMO=false; render(); document.getElementById('demoBtn').textContent='Show demo data'; return; }
-  ANSWERS = buildDemo(); GENERATED = new Date().toISOString(); DEMO = true; render();
-  document.getElementById('demoBtn').textContent='Clear demo data';
-});
-function buildDemo(){
-  const out = {};
-  let seed = 42;
-  const rand = ()=> (seed = (seed*1103515245+12345) % 2147483648) / 2147483648;
-  const iso = dAgo => new Date(Date.now()-dAgo*86400000).toISOString();
-  for (const lane of ROSTER){
-    for (const ent of lane.entities){
-      if (ent.closeOnly){
-        out[ent.n+'-Period close: balance sheet in balance at close'] = {value: rand()>.2, answeredAt: iso(3)};
-        continue;
-      }
-      const r = rand();
-      const state = r<.12 ? 'red' : r<.25 ? 'stale' : r<.35 ? 'silent' : 'good';
-      if (state==='silent') continue;
-      const dAgo = state==='stale'? 9 : Math.floor(rand()*4);
-      out[ent.n+'-EOD reports reviewed for the full week'] = {value: state!=='red' || rand()>.5, answeredAt: iso(dAgo)};
-      out[ent.n+'-Largest single-day over/short this week in dollars'] = {value: state==='red'&&rand()>.5? (25+Math.floor(rand()*80)) : Math.floor(rand()*15), answeredAt: iso(dAgo)};
-      out[ent.n+'-Cash deposits reconciled, after EOD review'] = {value: state!=='red', answeredAt: iso(dAgo)};
-      out[ent.n+'-All accounts reconciled through date'] = {value: new Date(Date.now()-(dAgo+2)*86400000).toISOString().slice(0,10), answeredAt: iso(dAgo)};
-      out[ent.n+'-Balance sheet in balance'] = {value: rand()>.06, answeredAt: iso(dAgo)};
-      if (ent.pay!==false) out[ent.n+'-Payroll entered through pay period ending'] = {value: new Date(Date.now()-(dAgo+1)*86400000).toISOString().slice(0,10), answeredAt: iso(dAgo)};
-      out[ent.n+'-Month close: balance sheet in balance at close'] = {value: rand()>.15, answeredAt: iso(Math.floor(rand()*10))};
-      out[ent.n+'-Exceptions or blockers'] = {value: rand()>.8? 'waiting on bank access' : '', answeredAt: iso(dAgo)};
-    }
-  }
-  return out;
-}
-
-async function boot(){
-  try {
-    const r = await fetch('data/board.json', {cache: 'no-store'});
-    if (r.ok) { const j = await r.json(); ANSWERS = j.answers || {}; GENERATED = j.generatedAt || null; }
-  } catch(e) { /* local file mode: fetch blocked, buttons still work */ }
-  render();
-}
-boot();
+b+='<p style="margin:12px 0 0;font-size:12.5px;color:var(--muted)">Items not carried on the daily checklist show n/a and are not scored. The equipment inspection cycle closed on Sep 19; confirm with the kitchen that this month\'s inspection was done. Automatic pars are due in nine days.</p>';
+document.getElementById("cadbody").innerHTML=b;
+})();
 </script>
 </body>
 </html>
