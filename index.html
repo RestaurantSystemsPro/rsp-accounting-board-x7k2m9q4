@@ -117,24 +117,24 @@
   </div>
 
   <div class="strip">
-    <div class="stat red"><span class="lbl">Red · act today</span><span class="val" id="sRed">0</span><span class="note">said no, over threshold, or silent past deadline</span></div>
-    <div class="stat amber"><span class="lbl">Amber · due soon</span><span class="val" id="sAmber">0</span><span class="note">approaching cadence limit</span></div>
-    <div class="stat green"><span class="lbl">Green · current</span><span class="val" id="sGreen">0</span><span class="note">answered and inside cadence</span></div>
-    <div class="stat gray"><span class="lbl">Silent</span><span class="val" id="sGray">0</span><span class="note">never answered, still in grace</span></div>
+    <div class="stat red"><span class="lbl">Red · act today</span><span class="val" id="sRed">0</span><span class="note">BAL, RECON or PAY two or more months behind, or a no</span></div>
+    <div class="stat amber"><span class="lbl">Amber · due soon</span><span class="val" id="sAmber">0</span><span class="note">one month behind on BAL, RECON or PAY</span></div>
+    <div class="stat green"><span class="lbl">Green · current</span><span class="val" id="sGreen">0</span><span class="note">BAL, RECON and PAY all through prior month end</span></div>
+    <div class="stat gray"><span class="lbl">Unverified</span><span class="val" id="sGray">0</span><span class="note">one of BAL, RECON, PAY never reported</span></div>
   </div>
 
   <div class="legend">
-    <span class="k"><span class="dot red"></span> red = no / over $20 / stale past cadence</span>
-    <span class="k"><span class="dot amber"></span> amber = due within 2 days</span>
-    <span class="k"><span class="dot green"></span> green = current</span>
-    <span class="k"><span class="dot gray"></span> gray = never reported / no answer yet, in grace window</span>
+    <span class="k"><span class="dot red"></span> red = BAL, RECON or PAY through-date before the end of the month two back (or a no)</span>
+    <span class="k"><span class="dot amber"></span> amber = through the end of the month two back, not yet the prior month</span>
+    <span class="k"><span class="dot green"></span> green = through prior month end on all three</span>
+    <span class="k"><span class="dot gray"></span> gray = one of the three never reported. EOD, O/S, DEP, CLOSE shown for reference, do not set client color</span>
     <span class="k">cells: EOD · O/S $ · DEP · RECON · BAL · PAY · CLOSE</span>
   </div>
 
   <div id="board"></div>
 
   <footer>
-    Scoring: weekly items stale 7 days after last answer (grace runs from launch date for never-answered). Close items due day 5 after month end, review day 7, stale after the 8th. Over/short red above $20. Client color = worst checkpoint. Data schema for the pull script: {"generatedAt": ISO, "answers": {"&lt;Entity&gt;-&lt;Question&gt;": {"value": ..., "answeredAt": ISO}}}
+    Scoring (Fred, 9/23/2026): client color = worst of RECON, BAL, PAY. Green = through-date on or after the end of the previous month. Amber = on or after the end of the month before that. Red = earlier, or a no. Unreported key cell = gray. EOD, O/S, DEP and CLOSE keep their own cell colors for reference only. Data schema for the pull script: {"generatedAt": ISO, "answers": {"&lt;Entity&gt;-&lt;Question&gt;": {"value": ..., "answeredAt": ISO}}}
   </footer>
 </div>
 
@@ -178,6 +178,7 @@ const ROSTER = [
 ];
 
 /* Cells map to question-name fragments; first match in the answers wins. */
+const KEY_CELLS = ['RECON','BAL','PAY'];
 const CELLS = [
  {key:'EOD',  label:'EOD',   kind:'check', frags:['EOD reports reviewed']},
  {key:'OS',   label:'O/S $', kind:'money', frags:['Largest single-day over/short','over/short']},
@@ -226,6 +227,27 @@ function scoreCell(entity, cell, ent){
   const a = findAnswer(entity, cell.frags);
   if (!a) return {s:'gray', v:'\u2014', tip:'never reported', nr:true};
 
+  /* KEY RULE (Fred, 9/23): BAL, RECON and PAY are scored against month ends.
+     green = through end of previous month or later; amber = through end of the month before that;
+     red = anything earlier or a flat no. Client color is the worst of these three only. */
+  if (KEY_CELLS.includes(cell.key)){
+    const n = now();
+    const prevEnd = new Date(n.getFullYear(), n.getMonth(), 0, 12);
+    const twoBackEnd = new Date(n.getFullYear(), n.getMonth()-1, 0, 12);
+    const isDate = typeof a.value === 'string' && /^\d{4}-\d{2}-\d{2}/.test(a.value);
+    if (isDate){
+      const d = new Date(a.value.slice(0,10) + 'T12:00:00');
+      const label = (d.getMonth()+1)+'/'+d.getDate();
+      if (d >= prevEnd) return {s:'green', v:label, tip:'through '+label+', current through prior month end'};
+      if (d >= twoBackEnd) return {s:'amber', v:label, tip:'through '+label+', one month behind'};
+      return {s:'red', v:label, tip:'through '+label+', two or more months behind'};
+    }
+    const yes = a.value===true || ['yes','true','1'].includes(String(a.value).toLowerCase());
+    if (yes) return {s:'green', v:'yes', tip:a.q};
+    if (a.value===false || ['no','false','0'].includes(String(a.value).toLowerCase())) return {s:'red', v:'no', tip:a.q};
+    return {s:'amber', v:String(a.value).slice(0,8), tip:'unparseable answer'};
+  }
+
   const answeredAge = ageDays(new Date(a.answeredAt));
   const staleTag = answeredAge > WEEKLY_STALE_DAYS;
 
@@ -267,9 +289,11 @@ function scoreCell(entity, cell, ent){
 const RANK = {red:3, amber:2, gray:1, green:0, na:-1};
 function scoreEntity(ent){
   const cells = CELLS.map(c => Object.assign({def:c}, scoreCell(ent.n, c, ent)));
-  const reported = cells.filter(c => !c.nr && c.s !== 'na' && c.s !== 'gray');
-  const worst = reported.reduce((w,c)=> RANK[c.s]>RANK[w]? c.s : w, 'na');
-  const nrCount = cells.filter(c => c.nr).length;
+  const key = cells.filter(c => KEY_CELLS.includes(c.def.key) && c.s !== 'na');
+  const scoringCells = key.length ? key : cells.filter(c => c.s !== 'na');
+  /* unreported key cell counts as gray: unknown is not green */
+  const worst = scoringCells.reduce((w,c)=> RANK[c.s]>RANK[w]? c.s : w, 'na');
+  const nrCount = key.filter(c => c.nr).length;
   return {cells, nrCount, worst: worst==='na' ? 'gray' : worst};
 }
 
